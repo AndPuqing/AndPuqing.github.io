@@ -6,7 +6,18 @@
     <description>Recent content in Pages on Example Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://AnderPuQing.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AnderPuQing.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://AnderPuQing.github.io/about/</link>
+      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://AnderPuQing.github.io/about/</guid>
+      <description>关于我 Welcome
+不太擅长交流，社恐，目前在某大学就读数字经济专业。
+联系方式  anderwing@126.com  </description>
+    </item>
+    
     <item>
       <title>Archives</title>
       <link>https://AnderPuQing.github.io/archives/</link>
@@ -14,17 +25,6 @@
       
       <guid>https://AnderPuQing.github.io/archives/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://AnderPuQing.github.io/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://AnderPuQing.github.io/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
- https://github.</description>
     </item>
     
     <item>
