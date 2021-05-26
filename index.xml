@@ -37,7 +37,7 @@ $$
 &lt;p&gt;其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。&lt;/p&gt;
 &lt;h4 id=&#34;平面&#34;&gt;平面&lt;/h4&gt;
 &lt;p&gt;而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/04/21/wt8HR.png%22&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/04/21/wt8HR.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。&lt;/p&gt;
 &lt;h4 id=&#34;柱面&#34;&gt;柱面&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/04/21/wtALd.png&#34; alt=&#34;wtALd.png&#34;  /&gt;&lt;/p&gt;
