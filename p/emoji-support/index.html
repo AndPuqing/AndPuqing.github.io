@@ -201,7 +201,7 @@
     
     <header class="article-category">
         
-            <a href="/categories/test/" style="background-color: #2a9d8f; color: #fff;">
+            <a href="/categories/test/" >
                 Test
             </a>
         
@@ -237,13 +237,25 @@
 <p>To enable emoji globally, set <code>enableEmoji</code> to <code>true</code> in your site&rsquo;s <a class="link" href="https://gohugo.io/getting-started/configuration/"  target="_blank" rel="noopener"
     >configuration</a> and then you can type emoji shorthand codes directly in content files; e.g.</p>
 <!-- raw HTML omitted -->
-<p>The <a class="link" href="http://www.emoji-cheat-sheet.com/"  target="_blank" rel="noopener"
+<p>🙉The <a class="link" href="http://www.emoji-cheat-sheet.com/"  target="_blank" rel="noopener"
     >Emoji cheat sheet</a> is a useful reference for emoji shorthand codes.</p>
-<hr>
 <p><strong>N.B.</strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.</p>
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">.emoji {
   font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
 }</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="o">&lt;</span><span class="nt">style</span><span class="o">&gt;</span>
+<span class="p">.</span><span class="nc">emojify</span> <span class="p">{</span>
+	<span class="k">font-family</span><span class="p">:</span> <span class="n">Apple</span> <span class="n">Color</span> <span class="n">Emoji</span><span class="p">,</span> <span class="n">Segoe</span> <span class="n">UI</span> <span class="n">Emoji</span><span class="p">,</span> <span class="n">NotoColorEmoji</span><span class="p">,</span> <span class="n">Segoe</span> <span class="n">UI</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">Android</span> <span class="n">Emoji</span><span class="p">,</span> <span class="n">EmojiSymbols</span><span class="p">;</span>
+	<span class="k">font-size</span><span class="p">:</span> <span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+	<span class="k">vertical-align</span><span class="p">:</span> <span class="kc">middle</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">@</span><span class="k">media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="p">:</span><span class="nd">650px</span><span class="o">)</span> <span class="p">{</span>
+  <span class="p">.</span><span class="nc">nowrap</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">25</span><span class="kt">px</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span></code></pre></div>
 </section>
 
 
@@ -279,28 +291,6 @@
         <h2 class="section-title">Related contents</h2>
         <div class="related-contents">
             <div class="flex article-list--tile">
-                
-                    
-<article class="has-image">
-    <a href="/p/test-chinese/">
-        
-        
-            <div class="article-image">
-                <img src="/p/test-chinese/_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_27040ddd7399aaf289c0ce70ee6592d9.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy" 
-                        data-key="test-chinese" 
-                        data-hash="md5-RvYejqai34/Fvx0koXxEpg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Chinese Test</h2>
-        </div>
-    </a>
-</article>
                 
                     
 <article class="has-image">
