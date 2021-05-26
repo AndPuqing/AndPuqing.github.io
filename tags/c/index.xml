@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on PuQing Site</title>
+    <link>https://AnderPuQing.github.io/tags/c/</link>
+    <description>Recent content in C on PuQing Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AnderPuQing.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>asciiToChar</title>
+      <link>https://AnderPuQing.github.io/p/asciitochar/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://AnderPuQing.github.io/p/asciitochar/</guid>
+      <description>&lt;p&gt;这是蓝桥杯训练第一道题：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This is the first problem for test. Since all we know the ASCII code, your job is simple: Input numbers and output corresponding messages.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Begin 《高等数学》都对曲面的参数方程解释少之又少，但我认为这是非常有意思的一种看法。
+下面请看解释法：
+在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。
+$$ \begin{aligned} l(t) &amp;amp;=(x(t),y(t),z(t))\cr S(u,v) &amp;amp;=(x(u,v),y(u,v),z(u,z)) \end{aligned} $$
+其中最简单的曲线和曲面是直线和平面，它们的方程是 $$ \begin{aligned} \begin{array}{c} l\left ( t \right ) =r_{0}&#43;tr_{1} \cr S(u,v)=r_{0}&#43;ur_{1}&#43;vr_{2} \end{array} \end{aligned} $$ 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。
+直线 其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
+平面 而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。
+而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。
+柱面 柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
+所以柱面的方程就是$S(u,v)=l(u)&#43;vr$.
+我们称$r$为母线，$l(t)$为准线。
+锥面 锥面就是一束通过一点的直线，它们的起点是$r$,方向是$r$到曲线$l(t)$上的各点。
+所以锥面的方程就是$S(u,v)=r&#43;v(l(u)-r)$，其中称$r$为锥面的顶点，$l(t)$为锥面的准线。
+旋转面 空间一条曲线$C:r(u)=(f(u),g(u),h(u))$，这里面$u\in[a,b]$.曲线$C$绕$z$轴旋转而成的曲面称为绕$z$轴旋转的旋转面。
+在这旋转面上选取一点$M(x,y,z)$，由曲线上一点$M^{*}(f(u),g(u),h(h))$绕$z$轴旋转而成，则$z=h(u)$.有过点$M^{*}$垂直于$z$轴，交点为点$A(0,0,h(u))$，线段$AM^{*}$的长等于$AM$的长度，因而有： $$ x^{2}&#43;y^{2}=(f(u))^{2}&#43;(g(u))^{2}. $$ 从而可写出绕$z$轴的旋转面方程为 $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\cos{v},\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\sin{v},h(u)). \end{aligned} $$ 类似地，可以写出绕$x,y$轴的方程： $$ \begin{aligned} X(u,v)=(f(u),\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\cos{v},\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
+$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
+更一般的，若空间曲线$C:r(u)$绕过原点$O$的一条直线$L:\frac{x}{l}=\frac{y}{m}=\frac{z}{n}$旋转，在曲线上任取一点$M(x,y,z)$，它由C上某一点$M^{*}$旋转相应角度得到，有关系式 $$ \begin{aligned} \left | \overrightarrow{OM} = \overrightarrow{OM^{*}}\right |,\overrightarrow{OM}\cdot (l,m,n) = \overrightarrow{OM^{*}}\cdot (l,m,n) \end{aligned} $$ 得到'><title>从参数方程到二次曲面</title>
+
+<link rel='canonical' href='https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='从参数方程到二次曲面'>
+<meta property='og:description' content='Begin 《高等数学》都对曲面的参数方程解释少之又少，但我认为这是非常有意思的一种看法。
+下面请看解释法：
+在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。
+$$ \begin{aligned} l(t) &amp;amp;=(x(t),y(t),z(t))\cr S(u,v) &amp;amp;=(x(u,v),y(u,v),z(u,z)) \end{aligned} $$
+其中最简单的曲线和曲面是直线和平面，它们的方程是 $$ \begin{aligned} \begin{array}{c} l\left ( t \right ) =r_{0}&#43;tr_{1} \cr S(u,v)=r_{0}&#43;ur_{1}&#43;vr_{2} \end{array} \end{aligned} $$ 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。
+直线 其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
+平面 而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。
+而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。
+柱面 柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
+所以柱面的方程就是$S(u,v)=l(u)&#43;vr$.
+我们称$r$为母线，$l(t)$为准线。
+锥面 锥面就是一束通过一点的直线，它们的起点是$r$,方向是$r$到曲线$l(t)$上的各点。
+所以锥面的方程就是$S(u,v)=r&#43;v(l(u)-r)$，其中称$r$为锥面的顶点，$l(t)$为锥面的准线。
+旋转面 空间一条曲线$C:r(u)=(f(u),g(u),h(u))$，这里面$u\in[a,b]$.曲线$C$绕$z$轴旋转而成的曲面称为绕$z$轴旋转的旋转面。
+在这旋转面上选取一点$M(x,y,z)$，由曲线上一点$M^{*}(f(u),g(u),h(h))$绕$z$轴旋转而成，则$z=h(u)$.有过点$M^{*}$垂直于$z$轴，交点为点$A(0,0,h(u))$，线段$AM^{*}$的长等于$AM$的长度，因而有： $$ x^{2}&#43;y^{2}=(f(u))^{2}&#43;(g(u))^{2}. $$ 从而可写出绕$z$轴的旋转面方程为 $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\cos{v},\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\sin{v},h(u)). \end{aligned} $$ 类似地，可以写出绕$x,y$轴的方程： $$ \begin{aligned} X(u,v)=(f(u),\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\cos{v},\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
+$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
+更一般的，若空间曲线$C:r(u)$绕过原点$O$的一条直线$L:\frac{x}{l}=\frac{y}{m}=\frac{z}{n}$旋转，在曲线上任取一点$M(x,y,z)$，它由C上某一点$M^{*}$旋转相应角度得到，有关系式 $$ \begin{aligned} \left | \overrightarrow{OM} = \overrightarrow{OM^{*}}\right |,\overrightarrow{OM}\cdot (l,m,n) = \overrightarrow{OM^{*}}\cdot (l,m,n) \end{aligned} $$ 得到'>
+<meta property='og:url' content='https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/'>
+<meta property='og:site_name' content='PuQing Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Math' /><meta property='article:tag' content='高等数学' /><meta property='article:published_time' content='2021-03-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray.jpg' />
+<meta name="twitter:title" content="从参数方程到二次曲面">
+<meta name="twitter:description" content="Begin 《高等数学》都对曲面的参数方程解释少之又少，但我认为这是非常有意思的一种看法。
+下面请看解释法：
+在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。
+$$ \begin{aligned} l(t) &amp;amp;=(x(t),y(t),z(t))\cr S(u,v) &amp;amp;=(x(u,v),y(u,v),z(u,z)) \end{aligned} $$
+其中最简单的曲线和曲面是直线和平面，它们的方程是 $$ \begin{aligned} \begin{array}{c} l\left ( t \right ) =r_{0}&#43;tr_{1} \cr S(u,v)=r_{0}&#43;ur_{1}&#43;vr_{2} \end{array} \end{aligned} $$ 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。
+直线 其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
+平面 而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。
+而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。
+柱面 柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
+所以柱面的方程就是$S(u,v)=l(u)&#43;vr$.
+我们称$r$为母线，$l(t)$为准线。
+锥面 锥面就是一束通过一点的直线，它们的起点是$r$,方向是$r$到曲线$l(t)$上的各点。
+所以锥面的方程就是$S(u,v)=r&#43;v(l(u)-r)$，其中称$r$为锥面的顶点，$l(t)$为锥面的准线。
+旋转面 空间一条曲线$C:r(u)=(f(u),g(u),h(u))$，这里面$u\in[a,b]$.曲线$C$绕$z$轴旋转而成的曲面称为绕$z$轴旋转的旋转面。
+在这旋转面上选取一点$M(x,y,z)$，由曲线上一点$M^{*}(f(u),g(u),h(h))$绕$z$轴旋转而成，则$z=h(u)$.有过点$M^{*}$垂直于$z$轴，交点为点$A(0,0,h(u))$，线段$AM^{*}$的长等于$AM$的长度，因而有： $$ x^{2}&#43;y^{2}=(f(u))^{2}&#43;(g(u))^{2}. $$ 从而可写出绕$z$轴的旋转面方程为 $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\cos{v},\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\sin{v},h(u)). \end{aligned} $$ 类似地，可以写出绕$x,y$轴的方程： $$ \begin{aligned} X(u,v)=(f(u),\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\cos{v},\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
+$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
+更一般的，若空间曲线$C:r(u)$绕过原点$O$的一条直线$L:\frac{x}{l}=\frac{y}{m}=\frac{z}{n}$旋转，在曲线上任取一点$M(x,y,z)$，它由C上某一点$M^{*}$旋转相应角度得到，有关系式 $$ \begin{aligned} \left | \overrightarrow{OM} = \overrightarrow{OM^{*}}\right |,\overrightarrow{OM}\cdot (l,m,n) = \overrightarrow{OM^{*}}\cdot (l,m,n) \end{aligned} $$ 得到"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray.jpg' />
+    <link rel="shortcut icon" href="img/avatar.jpg" />
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucc425954bc910cf36f6081524e70ddb0_1728_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">✨</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://AnderPuQing.github.io">PuQing Site</a></h1>
+        <h2 class="site-description">Stand Alone Complex.</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://AnderPuQing.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/">
+                <img src="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray_huac0c65fb1c0508015799d5fcd2b07036_122412_800x0_resize_q75_box.jpg"
+                        srcset="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray_huac0c65fb1c0508015799d5fcd2b07036_122412_800x0_resize_q75_box.jpg 800w, /p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray_huac0c65fb1c0508015799d5fcd2b07036_122412_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1732" 
+                        loading="lazy"
+                        alt="Featured image of post 从参数方程到二次曲面" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/">从参数方程到二次曲面</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Mar 07, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h3 id="begin">Begin</h3>
+<p>《高等数学》都对曲面的参数方程解释少之又少，但我认为这是非常有意思的一种看法。</p>
+<p>下面请看解释法：</p>
+<p>在空间$\mathbb{R}^{3}  $中，曲线是三维连续函数，曲面是三维连续二元函数。</p>
+<p>$$
+\begin{aligned}
+l(t) &amp;=(x(t),y(t),z(t))\cr
+S(u,v) &amp;=(x(u,v),y(u,v),z(u,z))
+\end{aligned}
+$$</p>
+<p>其中最简单的曲线和曲面是直线和平面，它们的方程是
+$$
+\begin{aligned}
+\begin{array}{c}
+l\left ( t \right ) =r_{0}+tr_{1}  \cr
+S(u,v)=r_{0}+ur_{1}+vr_{2}
+\end{array}
+\end{aligned}
+$$
+其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。</p>
+<h4 id="直线">直线</h4>
+<p><!-- raw HTML omitted --></p>
+<p>其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。</p>
+<h4 id="平面">平面</h4>
+<p>而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。</p>
+<p><!-- raw HTML omitted --></p>
+<p>而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。</p>
+<h4 id="柱面">柱面</h4>
+<p><img src="https://i.im5i.com/2021/04/21/wtALd.png" alt="wtALd.png"  /></p>
+<p>柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。</p>
+<p>所以柱面的方程就是$S(u,v)=l(u)+vr$.</p>
+<p>我们称$r$为母线，$l(t)$为准线。</p>
+<h4 id="锥面">锥面</h4>
+<p>锥面就是一束通过一点的直线，它们的起点是$r$,方向是$r$到曲线$l(t)$上的各点。</p>
+<p>所以锥面的方程就是$S(u,v)=r+v(l(u)-r)$，其中称$r$为锥面的顶点，$l(t)$为锥面的准线。</p>
+<h4 id="旋转面">旋转面</h4>
+<p>空间一条曲线$C:r(u)=(f(u),g(u),h(u))$，这里面$u\in[a,b]$.曲线$C$绕$z$轴旋转而成的曲面称为绕$z$轴旋转的旋转面。</p>
+<p>在这旋转面上选取一点$M(x,y,z)$，由曲线上一点$M^{*}(f(u),g(u),h(h))$绕$z$轴旋转而成，则$z=h(u)$.有过点$M^{*}$垂直于$z$轴，交点为点$A(0,0,h(u))$，线段$AM^{*}$的长等于$AM$的长度，因而有：
+$$
+x^{2}+y^{2}=(f(u))^{2}+(g(u))^{2}.
+$$
+从而可写出绕$z$轴的旋转面方程为
+$$
+\begin{aligned}
+X(u,v)=(\sqrt{(f(u))^{2}+(g(u))^{2}}\cos{v},\sqrt{(f(u))^{2}+(g(u))^{2}}\sin{v},h(u)).
+\end{aligned}
+$$
+类似地，可以写出绕$x,y$轴的方程：
+$$
+\begin{aligned}
+X(u,v)=(f(u),\sqrt{(g(u))^{2}+(h(u))^{2}}\cos{v},\sqrt{(g(u))^{2}+(h(u))^{2}}\sin{v}).
+\end{aligned}
+$$</p>
+<p>$$
+\begin{aligned}
+X(u,v)=(\sqrt{(f(u))^{2}+(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}+(h(u))^{2}}\sin{v}).
+\end{aligned}
+$$</p>
+<p>更一般的，若空间曲线$C:r(u)$绕过原点$O$的一条直线$L:\frac{x}{l}=\frac{y}{m}=\frac{z}{n}$旋转，在曲线上任取一点$M(x,y,z)$，它由C上某一点$M^{*}$旋转相应角度得到，有关系式
+$$
+\begin{aligned}
+\left | \overrightarrow{OM}  = \overrightarrow{OM^{*}}\right |,\overrightarrow{OM}\cdot (l,m,n) = \overrightarrow{OM^{*}}\cdot (l,m,n)
+\end{aligned}
+$$
+得到</p>
+<p>$$
+\begin{aligned}
+\begin{cases}
+x^{2}+y^{2}+z^{2}=(f(u))^{2}+(g(u))^{2}+(h(u))^2,\cr
+lx+my+nz=lf(u)+mg(u)+nh(u).
+\end{cases}
+\end{aligned}
+$$
+其实还有用旋转矩阵来看待旋转过程。</p>
+<p>待更&hellip;</p>
+<h4 id="应试有用技巧">应试有用技巧</h4>
+<h5 id="判断是否为旋转面">判断是否为旋转面</h5>
+<p>判断方程是否为旋转面（仅在绕$x,y,z$轴旋转讨论），观察以上$(4),(5),(6)$式我们可以看到，若绕$z$轴旋转，$x,y$的系数是一样的，且为和的关系，绕$y,z$轴旋转也是一样的。这样我们就有：</p>
+<blockquote>
+<ol>
+<li>若方程式中有两变量的系数一样，且为和的关系，则曲面是绕另一变量对应的轴的旋转面</li>
+</ol>
+</blockquote>
+<h5 id="判断是哪一曲线旋转而成">判断是哪一曲线旋转而成</h5>
+<p>判读了是旋转面后还不行，还有判断是哪一曲线绕轴旋转。</p>
+<p>试想一旋转面$S$，我们从旋转面的旋转轴的垂直方向看过去，在一平面上将会是旋转面的纵切面，即为曲线$C$，拿例子来说：</p>
+<p>对于旋转面$C:x^{2}+y^{2}-z^{2}=1$很显然，这是一个旋转单叶双曲面。由上面技巧可知，绕$z$轴旋转。我们从$x$轴看过去，即令$x=0$，有方程组：
+$$
+\begin{aligned}
+\begin{cases}
+y^{2}-z^{2}=1,\cr
+x=0.
+\end{cases}
+\end{aligned}
+$$
+该式就是曲线$C$，同样的你也可以令$y=0$，同样可以得到旋转面的界面曲线。</p>
+<h5 id="给曲线求旋转面方程">给曲线，求旋转面方程</h5>
+<p>给曲线更为抽象的表达，对于在$yOz$平面的曲线，我们有曲线$C:$
+$$
+\begin{aligned}
+\begin{cases}
+f(y,z)=0,\cr
+x=0.
+\end{cases}
+\end{aligned}
+$$
+取曲线$C$上任意一点$M_{1}(0,y_{1},z_{1})$有$f(y_{1},z{1})=0$</p>
+<p>当曲线绕$z$轴旋转时，旋转到另一点$M(x,y,z)$，其$z$坐标不变，即$z=z_{1}$</p>
+<p>且与$z$轴的距离有关系：
+$$
+x^{2}+y^{2}=x_{1}^{2}+y_{1}^{2}=y_{1}^{2}
+$$
+我们把公式$(11)$和$z=z_{1}$，带入到$f(y,z)=0$，有：
+$$
+f(\pm\sqrt{x^{2}+y^{2}},z)=0
+$$
+从以上推理公式可知，**曲线绕哪一轴旋转，对应的变量就不变，而另一个变量就换成以上形式**。</p>
+<p>好了，公式推完怎么用呢？请看例题。</p>
+<p>例：</p>
+<blockquote>
+<p>将$xOy$坐标面上的抛物线$z^{2}=5x$绕$x$轴旋转一周，求所生成的旋转曲面的方程？</p>
+</blockquote>
+<p>根据上面，曲线绕$x$轴旋转，即$x$不变，$z=\pm\sqrt{y^{2}+z^{2}}$，带入方程，得$y^{2}+z^{2}=5x$</p>
+<p>即所得结果。</p>
+<h5 id="非特征旋转面">非特征&quot;旋转面&quot;</h5>
+<p>这个是旋转面题的变体，即各种二次曲面的标准式，待更&hellip;</p>
+<h3 id="参考">参考</h3>
+<p>[1] <a class="link" href="" >空间解析几何（第二版）</a></p>
+<p>[2] (<a class="link" href="https://zhuanlan.zhihu.com/p/97986048"  target="_blank" rel="noopener"
+    >柱面、锥面和旋转面</a>)</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/math/">Math</a>
+        
+            <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="AndPuQing/utterances"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.body.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 PuQing Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
