@@ -6,18 +6,20 @@
 在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。
 $$ \begin{aligned} l(t) &amp;amp;=(x(t),y(t),z(t))\cr S(u,v) &amp;amp;=(x(u,v),y(u,v),z(u,z)) \end{aligned} $$
 其中最简单的曲线和曲面是直线和平面，它们的方程是 $$ \begin{aligned} \begin{array}{c} l\left ( t \right ) =r_{0}&#43;tr_{1} \cr S(u,v)=r_{0}&#43;ur_{1}&#43;vr_{2} \end{array} \end{aligned} $$ 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。
-直线 其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
+直线 一条直线的参数方程
+其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
 平面 而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。
+一个平面的参数方程
 而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。
-柱面 柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
+柱面 一个柱面的参数方程
+柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
 所以柱面的方程就是$S(u,v)=l(u)&#43;vr$.
 我们称$r$为母线，$l(t)$为准线。
 锥面 锥面就是一束通过一点的直线，它们的起点是$r$,方向是$r$到曲线$l(t)$上的各点。
 所以锥面的方程就是$S(u,v)=r&#43;v(l(u)-r)$，其中称$r$为锥面的顶点，$l(t)$为锥面的准线。
 旋转面 空间一条曲线$C:r(u)=(f(u),g(u),h(u))$，这里面$u\in[a,b]$.曲线$C$绕$z$轴旋转而成的曲面称为绕$z$轴旋转的旋转面。
 在这旋转面上选取一点$M(x,y,z)$，由曲线上一点$M^{*}(f(u),g(u),h(h))$绕$z$轴旋转而成，则$z=h(u)$.有过点$M^{*}$垂直于$z$轴，交点为点$A(0,0,h(u))$，线段$AM^{*}$的长等于$AM$的长度，因而有： $$ x^{2}&#43;y^{2}=(f(u))^{2}&#43;(g(u))^{2}. $$ 从而可写出绕$z$轴的旋转面方程为 $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\cos{v},\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\sin{v},h(u)). \end{aligned} $$ 类似地，可以写出绕$x,y$轴的方程： $$ \begin{aligned} X(u,v)=(f(u),\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\cos{v},\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
-$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
-更一般的，若空间曲线$C:r(u)$绕过原点$O$的一条直线$L:\frac{x}{l}=\frac{y}{m}=\frac{z}{n}$旋转，在曲线上任取一点$M(x,y,z)$，它由C上某一点$M^{*}$旋转相应角度得到，有关系式 $$ \begin{aligned} \left | \overrightarrow{OM} = \overrightarrow{OM^{*}}\right |,\overrightarrow{OM}\cdot (l,m,n) = \overrightarrow{OM^{*}}\cdot (l,m,n) \end{aligned} $$ 得到'><title>从参数方程到二次曲面</title>
+$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v}).'><title>从参数方程到二次曲面</title>
 
 <link rel='canonical' href='https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/'>
 
@@ -27,18 +29,20 @@ $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f
 在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。
 $$ \begin{aligned} l(t) &amp;amp;=(x(t),y(t),z(t))\cr S(u,v) &amp;amp;=(x(u,v),y(u,v),z(u,z)) \end{aligned} $$
 其中最简单的曲线和曲面是直线和平面，它们的方程是 $$ \begin{aligned} \begin{array}{c} l\left ( t \right ) =r_{0}&#43;tr_{1} \cr S(u,v)=r_{0}&#43;ur_{1}&#43;vr_{2} \end{array} \end{aligned} $$ 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。
-直线 其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
+直线 一条直线的参数方程
+其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
 平面 而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。
+一个平面的参数方程
 而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。
-柱面 柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
+柱面 一个柱面的参数方程
+柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
 所以柱面的方程就是$S(u,v)=l(u)&#43;vr$.
 我们称$r$为母线，$l(t)$为准线。
 锥面 锥面就是一束通过一点的直线，它们的起点是$r$,方向是$r$到曲线$l(t)$上的各点。
 所以锥面的方程就是$S(u,v)=r&#43;v(l(u)-r)$，其中称$r$为锥面的顶点，$l(t)$为锥面的准线。
 旋转面 空间一条曲线$C:r(u)=(f(u),g(u),h(u))$，这里面$u\in[a,b]$.曲线$C$绕$z$轴旋转而成的曲面称为绕$z$轴旋转的旋转面。
 在这旋转面上选取一点$M(x,y,z)$，由曲线上一点$M^{*}(f(u),g(u),h(h))$绕$z$轴旋转而成，则$z=h(u)$.有过点$M^{*}$垂直于$z$轴，交点为点$A(0,0,h(u))$，线段$AM^{*}$的长等于$AM$的长度，因而有： $$ x^{2}&#43;y^{2}=(f(u))^{2}&#43;(g(u))^{2}. $$ 从而可写出绕$z$轴的旋转面方程为 $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\cos{v},\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\sin{v},h(u)). \end{aligned} $$ 类似地，可以写出绕$x,y$轴的方程： $$ \begin{aligned} X(u,v)=(f(u),\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\cos{v},\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
-$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
-更一般的，若空间曲线$C:r(u)$绕过原点$O$的一条直线$L:\frac{x}{l}=\frac{y}{m}=\frac{z}{n}$旋转，在曲线上任取一点$M(x,y,z)$，它由C上某一点$M^{*}$旋转相应角度得到，有关系式 $$ \begin{aligned} \left | \overrightarrow{OM} = \overrightarrow{OM^{*}}\right |,\overrightarrow{OM}\cdot (l,m,n) = \overrightarrow{OM^{*}}\cdot (l,m,n) \end{aligned} $$ 得到'>
+$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v}).'>
 <meta property='og:url' content='https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/'>
 <meta property='og:site_name' content='PuQing Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Math' /><meta property='article:tag' content='高等数学' /><meta property='article:published_time' content='2021-03-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray.jpg' />
@@ -48,18 +52,20 @@ $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f
 在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。
 $$ \begin{aligned} l(t) &amp;amp;=(x(t),y(t),z(t))\cr S(u,v) &amp;amp;=(x(u,v),y(u,v),z(u,z)) \end{aligned} $$
 其中最简单的曲线和曲面是直线和平面，它们的方程是 $$ \begin{aligned} \begin{array}{c} l\left ( t \right ) =r_{0}&#43;tr_{1} \cr S(u,v)=r_{0}&#43;ur_{1}&#43;vr_{2} \end{array} \end{aligned} $$ 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。
-直线 其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
+直线 一条直线的参数方程
+其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。
 平面 而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。
+一个平面的参数方程
 而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。
-柱面 柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
+柱面 一个柱面的参数方程
+柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。
 所以柱面的方程就是$S(u,v)=l(u)&#43;vr$.
 我们称$r$为母线，$l(t)$为准线。
 锥面 锥面就是一束通过一点的直线，它们的起点是$r$,方向是$r$到曲线$l(t)$上的各点。
 所以锥面的方程就是$S(u,v)=r&#43;v(l(u)-r)$，其中称$r$为锥面的顶点，$l(t)$为锥面的准线。
 旋转面 空间一条曲线$C:r(u)=(f(u),g(u),h(u))$，这里面$u\in[a,b]$.曲线$C$绕$z$轴旋转而成的曲面称为绕$z$轴旋转的旋转面。
 在这旋转面上选取一点$M(x,y,z)$，由曲线上一点$M^{*}(f(u),g(u),h(h))$绕$z$轴旋转而成，则$z=h(u)$.有过点$M^{*}$垂直于$z$轴，交点为点$A(0,0,h(u))$，线段$AM^{*}$的长等于$AM$的长度，因而有： $$ x^{2}&#43;y^{2}=(f(u))^{2}&#43;(g(u))^{2}. $$ 从而可写出绕$z$轴的旋转面方程为 $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\cos{v},\sqrt{(f(u))^{2}&#43;(g(u))^{2}}\sin{v},h(u)). \end{aligned} $$ 类似地，可以写出绕$x,y$轴的方程： $$ \begin{aligned} X(u,v)=(f(u),\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\cos{v},\sqrt{(g(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
-$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v}). \end{aligned} $$
-更一般的，若空间曲线$C:r(u)$绕过原点$O$的一条直线$L:\frac{x}{l}=\frac{y}{m}=\frac{z}{n}$旋转，在曲线上任取一点$M(x,y,z)$，它由C上某一点$M^{*}$旋转相应角度得到，有关系式 $$ \begin{aligned} \left | \overrightarrow{OM} = \overrightarrow{OM^{*}}\right |,\overrightarrow{OM}\cdot (l,m,n) = \overrightarrow{OM^{*}}\cdot (l,m,n) \end{aligned} $$ 得到"><meta name="twitter:card" content="summary_large_image">
+$$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))^{2}&#43;(h(u))^{2}}\sin{v})."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray.jpg' />
     <link rel="shortcut icon" href="img/avatar.jpg" />
 
@@ -289,14 +295,47 @@ S(u,v)=r_{0}+ur_{1}+vr_{2}
 $$
 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。</p>
 <h4 id="直线">直线</h4>
-<p><img src="https://i.im5i.com/2021/04/21/wteq4.png" alt=""  /></p>
+<p><figure style="flex-grow: 59; flex-basis: 142px">
+		<a href="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4.png" data-size="271x458"><img src="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4.png"
+				srcset="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4_hu0ca765410fda974a58365c4d203492ca_11695_480x0_resize_box_2.png 480w, /p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4_hu0ca765410fda974a58365c4d203492ca_11695_1024x0_resize_box_2.png 1024w"
+				width="271"
+				height="458"
+				loading="lazy"
+				alt="一条直线的参数方程">
+		</a>
+		
+		<figcaption>一条直线的参数方程</figcaption>
+		
+	</figure></p>
 <p>其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。</p>
 <h4 id="平面">平面</h4>
 <p>而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。</p>
-<p><img src="https://i.im5i.com/2021/04/21/wt8HR.png" alt=""  /></p>
+<p><figure style="flex-grow: 59; flex-basis: 142px">
+		<a href="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR.png" data-size="271x458"><img src="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR.png"
+				srcset="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR_hub1152ce75445b6e431f00bfa0f057625_16291_480x0_resize_box_2.png 480w, /p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR_hub1152ce75445b6e431f00bfa0f057625_16291_1024x0_resize_box_2.png 1024w"
+				width="271"
+				height="458"
+				loading="lazy"
+				alt="一个平面的参数方程">
+		</a>
+		
+		<figcaption>一个平面的参数方程</figcaption>
+		
+	</figure></p>
 <p>而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。</p>
 <h4 id="柱面">柱面</h4>
-<p><img src="https://i.im5i.com/2021/04/21/wtALd.png" alt="wtALd.png"  /></p>
+<p><figure style="flex-grow: 86; flex-basis: 207px">
+		<a href="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd.png" data-size="171x198"><img src="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd.png"
+				srcset="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd_hu9b141ad990a35a15aa94a25487fc3533_1650_480x0_resize_box_2.png 480w, /p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd_hu9b141ad990a35a15aa94a25487fc3533_1650_1024x0_resize_box_2.png 1024w"
+				width="171"
+				height="198"
+				loading="lazy"
+				alt="一个柱面的参数方程">
+		</a>
+		
+		<figcaption>一个柱面的参数方程</figcaption>
+		
+	</figure></p>
 <p>柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。</p>
 <p>所以柱面的方程就是$S(u,v)=l(u)+vr$.</p>
 <p>我们称$r$为母线，$l(t)$为准线。</p>

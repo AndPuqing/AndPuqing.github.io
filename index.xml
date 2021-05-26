@@ -33,14 +33,47 @@ S(u,v)=r_{0}+ur_{1}+vr_{2}
 $$
 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。&lt;/p&gt;
 &lt;h4 id=&#34;直线&#34;&gt;直线&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/04/21/wteq4.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 59; flex-basis: 142px&#34;&gt;
+		&lt;a href=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4.png&#34; data-size=&#34;271x458&#34;&gt;&lt;img src=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4.png&#34;
+				srcset=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4_hu0ca765410fda974a58365c4d203492ca_11695_480x0_resize_box_2.png 480w, https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4_hu0ca765410fda974a58365c4d203492ca_11695_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;271&#34;
+				height=&#34;458&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;一条直线的参数方程&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;一条直线的参数方程&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;其中$l(t)$比较好理解，即为$r_{1}$为直线的方向向量，$r_{0}$为直线的“位移向量”。&lt;/p&gt;
 &lt;h4 id=&#34;平面&#34;&gt;平面&lt;/h4&gt;
 &lt;p&gt;而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/04/21/wt8HR.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 59; flex-basis: 142px&#34;&gt;
+		&lt;a href=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR.png&#34; data-size=&#34;271x458&#34;&gt;&lt;img src=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR.png&#34;
+				srcset=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR_hub1152ce75445b6e431f00bfa0f057625_16291_480x0_resize_box_2.png 480w, https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR_hub1152ce75445b6e431f00bfa0f057625_16291_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;271&#34;
+				height=&#34;458&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;一个平面的参数方程&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;一个平面的参数方程&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。&lt;/p&gt;
 &lt;h4 id=&#34;柱面&#34;&gt;柱面&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/04/21/wtALd.png&#34; alt=&#34;wtALd.png&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 86; flex-basis: 207px&#34;&gt;
+		&lt;a href=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd.png&#34; data-size=&#34;171x198&#34;&gt;&lt;img src=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd.png&#34;
+				srcset=&#34;https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd_hu9b141ad990a35a15aa94a25487fc3533_1650_480x0_resize_box_2.png 480w, https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd_hu9b141ad990a35a15aa94a25487fc3533_1650_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;171&#34;
+				height=&#34;198&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;一个柱面的参数方程&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;一个柱面的参数方程&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;柱面指的就是一束平行的直线，它们的方向是非零向量$r$，起点是曲线$l(t)$上的各点。&lt;/p&gt;
 &lt;p&gt;所以柱面的方程就是$S(u,v)=l(u)+vr$.&lt;/p&gt;
 &lt;p&gt;我们称$r$为母线，$l(t)$为准线。&lt;/p&gt;
