@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='引言  在定积分的计算中，使用积分区域的对称性和奇偶性可以简化计算。而这一结论进行推广后，还可以简化二重积分…、三重积 分，以及曲线积分和曲面积分的计算。
+二重积分的轮换不变性 定理的说明'><title>关于积分的轮换不变性</title>
+
+<link rel='canonical' href='https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='关于积分的轮换不变性'>
+<meta property='og:description' content='引言  在定积分的计算中，使用积分区域的对称性和奇偶性可以简化计算。而这一结论进行推广后，还可以简化二重积分…、三重积 分，以及曲线积分和曲面积分的计算。
+二重积分的轮换不变性 定理的说明'>
+<meta property='og:url' content='https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/'>
+<meta property='og:site_name' content='PuQing Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Math' /><meta property='article:tag' content='微积分' /><meta property='article:published_time' content='2021-05-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/yellow.jpg' />
+<meta name="twitter:title" content="关于积分的轮换不变性">
+<meta name="twitter:description" content="引言  在定积分的计算中，使用积分区域的对称性和奇偶性可以简化计算。而这一结论进行推广后，还可以简化二重积分…、三重积 分，以及曲线积分和曲面积分的计算。
+二重积分的轮换不变性 定理的说明"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/yellow.jpg' />
+    <link rel="shortcut icon" href="img/avatar.jpg" />
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucc425954bc910cf36f6081524e70ddb0_1728_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">✨</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://AndPuQing.github.io">PuQing Site</a></h1>
+        <h2 class="site-description">Stand Alone Complex.</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://AndPuQing.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/">
+                <img src="/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/yellow_hu08afc9d3655fc8a416d2ec76066dda1d_99457_800x0_resize_q75_box.jpg"
+                        srcset="/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/yellow_hu08afc9d3655fc8a416d2ec76066dda1d_99457_800x0_resize_q75_box.jpg 800w, /p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/yellow_hu08afc9d3655fc8a416d2ec76066dda1d_99457_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="799" 
+                        loading="lazy"
+                        alt="Featured image of post 关于积分的轮换不变性" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" >
+                高等数学
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/">关于积分的轮换不变性</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">May 27, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="引言">引言</h2>
+<p>  在定积分的计算中，使用积分区域的对称性和奇偶性可以简化计算。而这一结论进行推广后，还可以简化二重积分…、三重积 分，以及曲线积分和曲面积分的计算。</p>
+<h2 id="二重积分的轮换不变性">二重积分的轮换不变性</h2>
+<p><figure style="flex-grow: 228; flex-basis: 549px">
+		<a href="/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input.png" data-size="2200x961"><img src="/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input.png"
+				srcset="/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input_hub9a0a5419f4b205f94f7e8a5d70fc06d_499480_480x0_resize_box_2.png 480w, /p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input_hub9a0a5419f4b205f94f7e8a5d70fc06d_499480_1024x0_resize_box_2.png 1024w"
+				width="2200"
+				height="961"
+				loading="lazy"
+				alt="定理的说明">
+		</a>
+		
+		<figcaption>定理的说明</figcaption>
+		
+	</figure></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/math/">Math</a>
+        
+            <a href="/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/">微积分</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray.1f1ca15636562da7b88a0a87fad1f60d_hub1cb6eb83d98dc27747e41c27741c43c_84777_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-HxyhVjZWLae4igqH&#43;tH2DQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">从参数方程到二次曲面</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="AndPuQing/commit"
+        issue-term="title"
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.body.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 PuQing Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
