@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Math on PuQing Site</title>
-    <link>https://AnderPuQing.github.io/tags/math/</link>
+    <link>https://AndPuQing.github.io/tags/math/</link>
     <description>Recent content in Math on PuQing Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AnderPuQing.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从参数方程到二次曲面</title>
-      <link>https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
+      <link>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AnderPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</guid>
+      <guid>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</guid>
       <description>Begin 《高等数学》都对曲面的参数方程解释少之又少，但我认为这是非常有意思的一种看法。
 下面请看解释法：
 在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。
