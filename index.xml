@@ -6,7 +6,30 @@
         <description>Recent content on PuQing Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于积分的轮换不变性</title>
+        <link>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</link>
+        <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</guid>
+        <description>&lt;img src="https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/yellow.jpg" alt="Featured image of post 关于积分的轮换不变性" /&gt;&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
+&lt;p&gt;  在定积分的计算中，使用积分区域的对称性和奇偶性可以简化计算。而这一结论进行推广后，还可以简化二重积分…、三重积 分，以及曲线积分和曲面积分的计算。&lt;/p&gt;
+&lt;h2 id=&#34;二重积分的轮换不变性&#34;&gt;二重积分的轮换不变性&lt;/h2&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 228; flex-basis: 549px&#34;&gt;
+		&lt;a href=&#34;https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input.png&#34; data-size=&#34;2200x961&#34;&gt;&lt;img src=&#34;https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input.png&#34;
+				srcset=&#34;https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input_hub9a0a5419f4b205f94f7e8a5d70fc06d_499480_480x0_resize_box_2.png 480w, https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input_hub9a0a5419f4b205f94f7e8a5d70fc06d_499480_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2200&#34;
+				height=&#34;961&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;定理的说明&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;定理的说明&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>从参数方程到二次曲面</title>
         <link>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
         <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
