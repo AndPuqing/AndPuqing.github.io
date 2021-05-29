@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on PuQing Site</title>
-    <link>https://AndPuQing.github.io/post/</link>
+    <link>https://puqing.work/post/</link>
     <description>Recent content in Posts on PuQing Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>隐函数求导一点</title>
-      <link>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
+      <link>https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
       <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
+      <guid>https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
       <description>一个方程的情形  对于方程$F(x,y)=0$，若函数具有连续的偏导数，且取定$y=y(x)$，有偏导数： $$ \begin{aligned} \tag{1}\frac{dy}{dx}=-\frac{F_{x}}{F_{y}}. \end{aligned} $$
  下面我们来尝试推导该式： $$ \begin{aligned} F(x,y)=0 \cr F(x,y(x))=0 \cr \end{aligned}\tag{2} $$
  此时变成复合函数求导数，对两边对$x$求偏导得： $$ \begin{aligned} \frac{dF}{dx}+\frac{dF}{dy}\cdot\frac{dy}{dx}&amp;amp;=0 \cr \frac{dy}{dx}=-\frac{\frac{dF}{dx}}{\frac{dF}{dy}}\cr \frac{dy}{dx}=-\frac{F_{x}}{F_{y}}. \end{aligned}\tag{3} $$
@@ -27,20 +27,20 @@ $$ \begin{gathered} F(x,y,z)=0\cr dF=0\cr \frac{\partial F}{\partial x}dx+\frac{
     
     <item>
       <title>关于积分的轮换不变性</title>
-      <link>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</link>
+      <link>https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</link>
       <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</guid>
+      <guid>https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</guid>
       <description>引言  在定积分的计算中，使用积分区域的对称性和奇偶性可以简化计算。而这一结论进行推广后，还可以简化二重积分…、三重积 分，以及曲线积分和曲面积分的计算。
 二重积分的轮换不变性 定理的说明</description>
     </item>
     
     <item>
       <title>从参数方程到二次曲面</title>
-      <link>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
+      <link>https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</guid>
+      <guid>https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</guid>
       <description>Begin 《高等数学》都对曲面的参数方程解释少之又少，但我认为这是非常有意思的一种看法。
 下面请看解释法：
 在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。
@@ -64,10 +64,10 @@ $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}+(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))
     
     <item>
       <title>asciiToChar</title>
-      <link>https://AndPuQing.github.io/p/asciitochar/</link>
+      <link>https://puqing.work/p/asciitochar/</link>
       <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/asciitochar/</guid>
+      <guid>https://puqing.work/p/asciitochar/</guid>
       <description>&lt;p&gt;这是蓝桥杯训练第一道题：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This is the first problem for test. Since all we know the ASCII code, your job is simple: Input numbers and output corresponding messages.&lt;/p&gt;</description>
@@ -75,37 +75,37 @@ $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}+(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))
     
     <item>
       <title>Markdown Syntax Guide</title>
-      <link>https://AndPuQing.github.io/p/markdown-syntax-guide/</link>
+      <link>https://puqing.work/p/markdown-syntax-guide/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/markdown-syntax-guide/</guid>
+      <guid>https://puqing.work/p/markdown-syntax-guide/</guid>
       <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Placeholder Text</title>
-      <link>https://AndPuQing.github.io/p/placeholder-text/</link>
+      <link>https://puqing.work/p/placeholder-text/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/placeholder-text/</guid>
+      <guid>https://puqing.work/p/placeholder-text/</guid>
       <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Math Typesetting</title>
-      <link>https://AndPuQing.github.io/p/math-typesetting/</link>
+      <link>https://puqing.work/p/math-typesetting/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/math-typesetting/</guid>
+      <guid>https://puqing.work/p/math-typesetting/</guid>
       <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Emoji Support</title>
-      <link>https://AndPuQing.github.io/p/emoji-support/</link>
+      <link>https://puqing.work/p/emoji-support/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/emoji-support/</guid>
+      <guid>https://puqing.work/p/emoji-support/</guid>
       <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
     </item>
     

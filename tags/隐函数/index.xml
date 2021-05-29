@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>隐函数 on PuQing Site</title>
-    <link>https://AndPuQing.github.io/tags/%E9%9A%90%E5%87%BD%E6%95%B0/</link>
+    <link>https://puqing.work/tags/%E9%9A%90%E5%87%BD%E6%95%B0/</link>
     <description>Recent content in 隐函数 on PuQing Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/tags/%E9%9A%90%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/tags/%E9%9A%90%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>隐函数求导一点</title>
-      <link>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
+      <link>https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
       <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
+      <guid>https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
       <description>一个方程的情形  对于方程$F(x,y)=0$，若函数具有连续的偏导数，且取定$y=y(x)$，有偏导数： $$ \begin{aligned} \tag{1}\frac{dy}{dx}=-\frac{F_{x}}{F_{y}}. \end{aligned} $$
  下面我们来尝试推导该式： $$ \begin{aligned} F(x,y)=0 \cr F(x,y(x))=0 \cr \end{aligned}\tag{2} $$
  此时变成复合函数求导数，对两边对$x$求偏导得： $$ \begin{aligned} \frac{dF}{dx}+\frac{dF}{dy}\cdot\frac{dy}{dx}&amp;amp;=0 \cr \frac{dy}{dx}=-\frac{\frac{dF}{dx}}{\frac{dF}{dy}}\cr \frac{dy}{dx}=-\frac{F_{x}}{F_{y}}. \end{aligned}\tag{3} $$

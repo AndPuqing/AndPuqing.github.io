@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on PuQing Site</title>
-    <link>https://AndPuQing.github.io/page/</link>
+    <link>https://puqing.work/page/</link>
     <description>Recent content in Pages on PuQing Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://AndPuQing.github.io/about/</link>
+      <link>https://puqing.work/about/</link>
       <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/about/</guid>
+      <guid>https://puqing.work/about/</guid>
       <description>📝关于我 Welcome✨
 目前在某大学就读数字经济专业。常用PuQing，AndPuQing，AnderWing等用户名出现在网上
 📞联系方式  📧anderwing@126.com GitHub  </description>
@@ -20,19 +20,19 @@
     
     <item>
       <title>Archives</title>
-      <link>https://AndPuQing.github.io/archives/</link>
+      <link>https://puqing.work/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/archives/</guid>
+      <guid>https://puqing.work/archives/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Search</title>
-      <link>https://AndPuQing.github.io/search/</link>
+      <link>https://puqing.work/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/search/</guid>
+      <guid>https://puqing.work/search/</guid>
       <description></description>
     </item>
     

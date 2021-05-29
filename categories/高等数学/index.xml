@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>高等数学 on PuQing Site</title>
-    <link>https://AndPuQing.github.io/categories/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</link>
+    <link>https://puqing.work/categories/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</link>
     <description>Recent content in 高等数学 on PuQing Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/categories/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/categories/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>隐函数求导一点</title>
-      <link>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
+      <link>https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
       <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
+      <guid>https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
       <description>一个方程的情形  对于方程$F(x,y)=0$，若函数具有连续的偏导数，且取定$y=y(x)$，有偏导数： $$ \begin{aligned} \tag{1}\frac{dy}{dx}=-\frac{F_{x}}{F_{y}}. \end{aligned} $$
  下面我们来尝试推导该式： $$ \begin{aligned} F(x,y)=0 \cr F(x,y(x))=0 \cr \end{aligned}\tag{2} $$
  此时变成复合函数求导数，对两边对$x$求偏导得： $$ \begin{aligned} \frac{dF}{dx}+\frac{dF}{dy}\cdot\frac{dy}{dx}&amp;amp;=0 \cr \frac{dy}{dx}=-\frac{\frac{dF}{dx}}{\frac{dF}{dy}}\cr \frac{dy}{dx}=-\frac{F_{x}}{F_{y}}. \end{aligned}\tag{3} $$
@@ -27,20 +27,20 @@ $$ \begin{gathered} F(x,y,z)=0\cr dF=0\cr \frac{\partial F}{\partial x}dx+\frac{
     
     <item>
       <title>关于积分的轮换不变性</title>
-      <link>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</link>
+      <link>https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</link>
       <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</guid>
+      <guid>https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</guid>
       <description>引言  在定积分的计算中，使用积分区域的对称性和奇偶性可以简化计算。而这一结论进行推广后，还可以简化二重积分…、三重积 分，以及曲线积分和曲面积分的计算。
 二重积分的轮换不变性 定理的说明</description>
     </item>
     
     <item>
       <title>从参数方程到二次曲面</title>
-      <link>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
+      <link>https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</guid>
+      <guid>https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</guid>
       <description>Begin 《高等数学》都对曲面的参数方程解释少之又少，但我认为这是非常有意思的一种看法。
 下面请看解释法：
 在空间$\mathbb{R}^{3} $中，曲线是三维连续函数，曲面是三维连续二元函数。

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>PuQing Site</title>
-        <link>https://AndPuQing.github.io/</link>
+        <link>https://puqing.work/</link>
         <description>Recent content on PuQing Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>隐函数求导一点</title>
-        <link>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
+        <link>https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
         <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
-        <description>&lt;img src="https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/orange.jpg" alt="Featured image of post 隐函数求导一点" /&gt;&lt;h2 id=&#34;一个方程的情形&#34;&gt;一个方程的情形&lt;/h2&gt;
+        <guid>https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
+        <description>&lt;img src="https://puqing.work/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/orange.jpg" alt="Featured image of post 隐函数求导一点" /&gt;&lt;h2 id=&#34;一个方程的情形&#34;&gt;一个方程的情形&lt;/h2&gt;
 &lt;p&gt;  对于方程$F(x,y)=0$，若函数具有连续的偏导数，且取定$y=y(x)$，有偏导数：
 $$
 \begin{aligned}
@@ -104,16 +104,16 @@ $$&lt;/li&gt;
         </item>
         <item>
         <title>关于积分的轮换不变性</title>
-        <link>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</link>
+        <link>https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</link>
         <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</guid>
-        <description>&lt;img src="https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/yellow.jpg" alt="Featured image of post 关于积分的轮换不变性" /&gt;&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
+        <guid>https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</guid>
+        <description>&lt;img src="https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/yellow.jpg" alt="Featured image of post 关于积分的轮换不变性" /&gt;&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
 &lt;p&gt;  在定积分的计算中，使用积分区域的对称性和奇偶性可以简化计算。而这一结论进行推广后，还可以简化二重积分…、三重积 分，以及曲线积分和曲面积分的计算。&lt;/p&gt;
 &lt;h2 id=&#34;二重积分的轮换不变性&#34;&gt;二重积分的轮换不变性&lt;/h2&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 228; flex-basis: 549px&#34;&gt;
-		&lt;a href=&#34;https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input.png&#34; data-size=&#34;2200x961&#34;&gt;&lt;img src=&#34;https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input.png&#34;
-				srcset=&#34;https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input_hub9a0a5419f4b205f94f7e8a5d70fc06d_499480_480x0_resize_box_2.png 480w, https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input_hub9a0a5419f4b205f94f7e8a5d70fc06d_499480_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input.png&#34; data-size=&#34;2200x961&#34;&gt;&lt;img src=&#34;https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input.png&#34;
+				srcset=&#34;https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input_hub9a0a5419f4b205f94f7e8a5d70fc06d_499480_480x0_resize_box_2.png 480w, https://puqing.work/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/input_hub9a0a5419f4b205f94f7e8a5d70fc06d_499480_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2200&#34;
 				height=&#34;961&#34;
 				loading=&#34;lazy&#34;
@@ -127,11 +127,11 @@ $$&lt;/li&gt;
         </item>
         <item>
         <title>从参数方程到二次曲面</title>
-        <link>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
+        <link>https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
         <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</guid>
-        <description>&lt;img src="https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray.jpg" alt="Featured image of post 从参数方程到二次曲面" /&gt;&lt;h3 id=&#34;begin&#34;&gt;Begin&lt;/h3&gt;
+        <guid>https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</guid>
+        <description>&lt;img src="https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/gray.jpg" alt="Featured image of post 从参数方程到二次曲面" /&gt;&lt;h3 id=&#34;begin&#34;&gt;Begin&lt;/h3&gt;
 &lt;p&gt;《高等数学》都对曲面的参数方程解释少之又少，但我认为这是非常有意思的一种看法。&lt;/p&gt;
 &lt;p&gt;下面请看解释法：&lt;/p&gt;
 &lt;p&gt;在空间$\mathbb{R}^{3}  $中，曲线是三维连续函数，曲面是三维连续二元函数。&lt;/p&gt;
@@ -153,8 +153,8 @@ $$
 其中$r_{0},r_{1},r_{2}$均为向量，且$r_{1},r_{2}$是不共线的非零向量。&lt;/p&gt;
 &lt;h4 id=&#34;直线&#34;&gt;直线&lt;/h4&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 59; flex-basis: 142px&#34;&gt;
-		&lt;a href=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4.png&#34; data-size=&#34;271x458&#34;&gt;&lt;img src=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4.png&#34;
-				srcset=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4_hu0ca765410fda974a58365c4d203492ca_11695_480x0_resize_box_2.png 480w, https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4_hu0ca765410fda974a58365c4d203492ca_11695_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4.png&#34; data-size=&#34;271x458&#34;&gt;&lt;img src=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4.png&#34;
+				srcset=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4_hu0ca765410fda974a58365c4d203492ca_11695_480x0_resize_box_2.png 480w, https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wteq4_hu0ca765410fda974a58365c4d203492ca_11695_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;271&#34;
 				height=&#34;458&#34;
 				loading=&#34;lazy&#34;
@@ -168,8 +168,8 @@ $$
 &lt;h4 id=&#34;平面&#34;&gt;平面&lt;/h4&gt;
 &lt;p&gt;而平面实际上是就是一个直线的位移向量乘以了一个自由量，此时平面就$r_{1},r_{2}$张成的空间，$r_{0}$为平面是“位移向量”。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 59; flex-basis: 142px&#34;&gt;
-		&lt;a href=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR.png&#34; data-size=&#34;271x458&#34;&gt;&lt;img src=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR.png&#34;
-				srcset=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR_hub1152ce75445b6e431f00bfa0f057625_16291_480x0_resize_box_2.png 480w, https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR_hub1152ce75445b6e431f00bfa0f057625_16291_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR.png&#34; data-size=&#34;271x458&#34;&gt;&lt;img src=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR.png&#34;
+				srcset=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR_hub1152ce75445b6e431f00bfa0f057625_16291_480x0_resize_box_2.png 480w, https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wt8HR_hub1152ce75445b6e431f00bfa0f057625_16291_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;271&#34;
 				height=&#34;458&#34;
 				loading=&#34;lazy&#34;
@@ -182,8 +182,8 @@ $$
 &lt;p&gt;而平面的法向量$n=n_{1}\times n_{2}$，点为$r_{0}$，就可转化为点法式。&lt;/p&gt;
 &lt;h4 id=&#34;柱面&#34;&gt;柱面&lt;/h4&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 86; flex-basis: 207px&#34;&gt;
-		&lt;a href=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd.png&#34; data-size=&#34;171x198&#34;&gt;&lt;img src=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd.png&#34;
-				srcset=&#34;https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd_hu9b141ad990a35a15aa94a25487fc3533_1650_480x0_resize_box_2.png 480w, https://AndPuQing.github.io/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd_hu9b141ad990a35a15aa94a25487fc3533_1650_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd.png&#34; data-size=&#34;171x198&#34;&gt;&lt;img src=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd.png&#34;
+				srcset=&#34;https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd_hu9b141ad990a35a15aa94a25487fc3533_1650_480x0_resize_box_2.png 480w, https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/wtALd_hu9b141ad990a35a15aa94a25487fc3533_1650_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;171&#34;
 				height=&#34;198&#34;
 				loading=&#34;lazy&#34;
@@ -298,11 +298,11 @@ $$
         </item>
         <item>
         <title>asciiToChar</title>
-        <link>https://AndPuQing.github.io/p/asciitochar/</link>
+        <link>https://puqing.work/p/asciitochar/</link>
         <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://AndPuQing.github.io/p/asciitochar/</guid>
-        <description>&lt;img src="https://AndPuQing.github.io/p/asciitochar/purple.jpg" alt="Featured image of post asciiToChar" /&gt;&lt;p&gt;这是蓝桥杯训练第一道题：&lt;/p&gt;
+        <guid>https://puqing.work/p/asciitochar/</guid>
+        <description>&lt;img src="https://puqing.work/p/asciitochar/purple.jpg" alt="Featured image of post asciiToChar" /&gt;&lt;p&gt;这是蓝桥杯训练第一道题：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This is the first problem for test. Since all we know the ASCII code, your job is simple: Input numbers and output corresponding messages.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入&lt;/strong&gt;&lt;/p&gt;
@@ -346,11 +346,11 @@ $$
         </item>
         <item>
         <title>Markdown Syntax Guide</title>
-        <link>https://AndPuQing.github.io/p/markdown-syntax-guide/</link>
+        <link>https://puqing.work/p/markdown-syntax-guide/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://AndPuQing.github.io/p/markdown-syntax-guide/</guid>
-        <description>&lt;img src="https://AndPuQing.github.io/p/markdown-syntax-guide/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
+        <guid>https://puqing.work/p/markdown-syntax-guide/</guid>
+        <description>&lt;img src="https://puqing.work/p/markdown-syntax-guide/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
 &lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;
 &lt;p&gt;The following HTML &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;—&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; elements represent six levels of section headings. &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; is the highest section level while &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; is the lowest.&lt;/p&gt;
 &lt;h1 id=&#34;h1&#34;&gt;H1&lt;/h1&gt;
@@ -493,11 +493,11 @@ $$
         </item>
         <item>
         <title>Placeholder Text</title>
-        <link>https://AndPuQing.github.io/p/placeholder-text/</link>
+        <link>https://puqing.work/p/placeholder-text/</link>
         <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://AndPuQing.github.io/p/placeholder-text/</guid>
-        <description>&lt;img src="https://AndPuQing.github.io/p/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post Placeholder Text" /&gt;&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
+        <guid>https://puqing.work/p/placeholder-text/</guid>
+        <description>&lt;img src="https://puqing.work/p/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post Placeholder Text" /&gt;&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
 &lt;p&gt;Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Exierant elisi ambit vivere dedere&lt;/li&gt;
@@ -524,10 +524,10 @@ $$
         </item>
         <item>
         <title>Math Typesetting</title>
-        <link>https://AndPuQing.github.io/p/math-typesetting/</link>
+        <link>https://puqing.work/p/math-typesetting/</link>
         <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://AndPuQing.github.io/p/math-typesetting/</guid>
+        <guid>https://puqing.work/p/math-typesetting/</guid>
         <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;
 &lt;p&gt;In this example we will be using &lt;a class=&#34;link&#34; href=&#34;https://katex.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;KaTeX&lt;/a&gt;&lt;/p&gt;
@@ -556,11 +556,11 @@ $$&lt;/p&gt;</description>
         </item>
         <item>
         <title>Emoji Support</title>
-        <link>https://AndPuQing.github.io/p/emoji-support/</link>
+        <link>https://puqing.work/p/emoji-support/</link>
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://AndPuQing.github.io/p/emoji-support/</guid>
-        <description>&lt;img src="https://AndPuQing.github.io/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post Emoji Support" /&gt;&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;
+        <guid>https://puqing.work/p/emoji-support/</guid>
+        <description>&lt;img src="https://puqing.work/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post Emoji Support" /&gt;&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;
 &lt;p&gt;The &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/functions/emojify/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;code&gt;emojify&lt;/code&gt;&lt;/a&gt; function can be called directly in templates or &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/templates/shortcode-templates/#inline-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Inline Shortcodes&lt;/a&gt;.&lt;/p&gt;
