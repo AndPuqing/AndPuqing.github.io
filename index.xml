@@ -6,7 +6,103 @@
         <description>Recent content on PuQing Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AndPuQing.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>隐函数求导一点</title>
+        <link>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</link>
+        <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/</guid>
+        <description>&lt;img src="https://AndPuQing.github.io/p/%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%80%E7%82%B9/orange.jpg" alt="Featured image of post 隐函数求导一点" /&gt;&lt;h2 id=&#34;一个方程的情形&#34;&gt;一个方程的情形&lt;/h2&gt;
+&lt;p&gt;  对于方程$F(x,y)=0$，若函数具有连续的偏导数，且取定$y=y(x)$，有偏导数：
+$$
+\begin{aligned}
+\tag{1}\frac{dy}{dx}=-\frac{F_{x}}{F_{y}}.
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;  下面我们来尝试推导该式：
+$$
+\begin{aligned}
+F(x,y)=0 \cr
+F(x,y(x))=0 \cr
+\end{aligned}\tag{2}
+$$&lt;/p&gt;
+&lt;p&gt;  此时变成复合函数求导数，对两边对$x$求偏导得：
+$$
+\begin{aligned}
+\frac{dF}{dx}+\frac{dF}{dy}\cdot\frac{dy}{dx}&amp;amp;=0 \cr
+\frac{dy}{dx}=-\frac{\frac{dF}{dx}}{\frac{dF}{dy}}\cr
+\frac{dy}{dx}=-\frac{F_{x}}{F_{y}}.
+\end{aligned}\tag{3}
+$$&lt;/p&gt;
+&lt;p&gt;  若是多变量时有如下推导过程：&lt;/p&gt;
+&lt;p&gt;  假设$z$可以表示为$z=z(x,y)$，则有：
+$$
+\begin{gathered}
+F(x,y,z)=0\cr
+F(x,y,z(x,y))=0\cr
+\frac{\partial{F}}{\partial x}\cdot\frac{dx}{dx}+\frac{\partial{F}}{\partial y}\cdot\frac{dy}{dx}+\frac{\partial{F}}{\partial z}\cdot\frac{\partial z}{\partial x}=0
+\end{gathered}
+$$&lt;/p&gt;
+&lt;p&gt;  实际上我们对$x$求偏导，把$y$视为常量，所以$\frac{dy}{dx}=0$，而这里这样写是为了让你回忆起它完整的过程。所以：
+$$
+\frac{\partial z}{\partial x}=-\frac{F_{x}}{F_{z}},\tag{4}
+$$&lt;/p&gt;
+&lt;p&gt;  同理对于$y$，可得：
+$$
+\frac{\partial z}{\partial y}=-\frac{F_{y}}{F_{z}}.\tag{5}
+$$&lt;/p&gt;
+&lt;p&gt;  以上我们便推导出了隐函数求偏导的公式。&lt;/p&gt;
+&lt;p&gt;  实际上我们还可以用全微分的形式不变性来求偏导数。&lt;/p&gt;
+&lt;p&gt;$$
+\begin{gathered}
+F(x,y,z)=0\cr
+dF=0\cr
+\frac{\partial F}{\partial x}dx+\frac{\partial F}{\partial y}dy+\frac{\partial F}{\partial z}dz=0\cr
+dz=-\frac{F_{x}}{F_{z}}dx+(-\frac{F_{y}}{F_{z}})dy
+\end{gathered}\tag{6}
+$$&lt;/p&gt;
+&lt;p&gt;$e.g.$加深印象&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有$F(x-y,y-z,z-x)=0$，$F$具有连续的一阶偏导数，求$\frac{\partial z}{\partial x}+\frac{\partial z}{\partial y}$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面用两种方法求解：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;根据公式：
+$$
+\begin{gathered}
+\begin{cases}
+\frac{\partial z}{\partial x}=-\frac{F_{x}}{F_{z}}\cr
+F_{x}=F_{1}&#39;-F_{3}&#39;\cr
+F_{z}=-F_{2}&#39;+F_{3}&#39;
+\end{cases},
+\begin{cases}
+\frac{\partial z}{\partial y}=-\frac{F_{y}}{F_{z}}\cr
+F_{y}=-F_{1}&#39;+F_{2}&#39;\cr
+F_{z}=-F_{2}&#39;+F_{3}&#39;
+\end{cases}\cr
+\Downarrow \cr
+\frac{\partial z}{\partial x}=\frac{F_{1}&#39;-F_{3}&#39;}{F_{2}&#39;-F_{3}&#39;},\frac{\partial z}{\partial y}=\frac{-F_{1}&#39;+F_{2}&#39;}{F_{2}&#39;-F_{3}&#39;}\cr
+\Downarrow \cr
+\frac{\partial z}{\partial x}+\frac{\partial z}{\partial y}=1.
+\end{gathered}
+$$&lt;/li&gt;
+&lt;li&gt;全微分
+$$
+\begin{gathered}
+dF(x-y,y-z,z-x)=0\cr
+F_{1}&#39; d(x-y)+F_{2}&#39; d(y-z)+F_{3}&#39; d(z-x)=0\cr
+F_{1}&#39; (dx-dy)+F_{2}&#39; (dy-dz)+F_{3}&#39; (dz-dx)=0\cr
+(F_{1}&#39;-F_{3}&#39;)dx+(F_{2}&#39;-F_{1}&#39;)dy=(F_{2}&#39;-F_{3}&#39;)dz\cr
+dz=\frac{F_{1}&#39;-F_{3}&#39;}{F_{2}&#39;-F_{3}&#39;}dx+\frac{F_{2}&#39;-F_{1}&#39;}{F_{2}&#39;-F_{3}&#39;}dy\cr
+\frac{\partial z}{\partial x}+\frac{\partial z}{\partial y}=1.
+\end{gathered}
+$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;方程组的情形&#34;&gt;方程组的情形&lt;/h2&gt;
+&lt;p&gt;写不动了&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>关于积分的轮换不变性</title>
         <link>https://AndPuQing.github.io/p/%E5%85%B3%E4%BA%8E%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E4%B8%8D%E5%8F%98%E6%80%A7/</link>
         <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
