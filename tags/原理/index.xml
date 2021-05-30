@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>原理 on PuQing Site</title>
+    <link>https://puqing.work/tags/%E5%8E%9F%E7%90%86/</link>
+    <description>Recent content in 原理 on PuQing Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/tags/%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>卷积与神经网络</title>
+      <link>https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Wed, 05 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</guid>
+      <description>理解卷积   在泛函分析中，卷积（又称叠积（convolution）、褶积或旋积），是透过两个函数 f 和 g 生成第三个函数的一种数学算子，表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积。
+  以上源自卷积 - 维基百科的介绍。
+定义
+设$f(x)、g(x)$是定义在$\mathbb{R}^{n}$上的可测函数，$f$与$g$的卷积记作$f\ast g$，它是其中一个函数翻转，并平移后，与另一个函数的乘积的积分，是一个对平移量的函数，有
+连续形式： $$ \begin{gathered} (f\ast g)(t)\overset{def}{=}\int_{-\infty}^{+\infty}f(\tau)g(t-\tau)d\tau \end{gathered} $$
+离散形式： $$ \begin{gathered} (f\ast g)(t)=\sum_{\tau=-\infty}^{\infty}f(\tau)g(t-\tau) \end{gathered} $$ 🤔这个式子可能有点难以理解，下面将通过几个例子说明
+ 不过注意的是下面便于理解的方式都是建立在丢弃了什么的基础上的，若想进一步理解，请学习相关课程
+ 从一个小球开始  本篇文章源自Understanding Convolutions作者的这种思路非常巧妙。
+  想象一个小球从一定高度落到地面（地面为一维），如果你把一个球丢出去，然后再从落地的地方再扔出去，那么它距离原始点的距离$C$的可能性有多大？
+ 分析一下这个过程。在第一次掉落后，它会以$f(a)$的概率落在离起点$a$个单位距离的地方，其中$f$为概率分布。
+ 在第一次下落后，再从上一次下落的地方以另一个高度扔下去。以新起点滚动的$b$单位的概率是$g(b)$，其中$g$可能是不同的分布。如同下图所示。
+ 如果我们固定了第一次下落的结果，这样我们就知道了球移动的距离$a$，对于球移动的总距离$c$，第二次下落的距离也固定在$b$，其中$a+b=c$。所以这个发生的概率就是$f(a)\cdot g(b)$。
+ 让我们看一下更加具体的例子吧。我们想要总距离$c$等于3，如果第一次$a=2$，则第二次必定$b=1$，则概率便是$f(2)\cdot g(1)$。
+ 但是，很明显不可能只有这一种情况，只要$a+b=3$，都是可以的，如下面两种情况。
+ 概率分别是$f(1)\cdot g(2)$和$f(0)\cdot g(3)$。
+ 为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下： $$ \begin{gathered} \dots f(0)\cdot g(3)+f(1)\cdot g(2)+f(2)\cdot g(1) \dots \end{gathered} $$ 更加便捷的写法为： $$ \begin{gathered} \sum_{a+b=c}{f(a)\cdot g(b)} \end{gathered} $$ 这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为： $$ \begin{gathered} (f\ast g)(c)=\sum_{a+b=c}{f(a)\cdot g(b)} \end{gathered} $$ 如果我们代入$b=c-a$，于是得到： $$ \begin{gathered} (f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)} \end{gathered} $$ 在这里我们实际上已经推导出了卷积的离散形式</description>
+    </item>
+    
+  </channel>
+</rss>

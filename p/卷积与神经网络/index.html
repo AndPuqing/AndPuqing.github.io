@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='理解卷积   在泛函分析中，卷积（又称叠积（convolution）、褶积或旋积），是透过两个函数 f 和 g 生成第三个函数的一种数学算子，表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积。
+  以上源自卷积 - 维基百科的介绍。
+定义
+设$f(x)、g(x)$是定义在$\mathbb{R}^{n}$上的可测函数，$f$与$g$的卷积记作$f\ast g$，它是其中一个函数翻转，并平移后，与另一个函数的乘积的积分，是一个对平移量的函数，有
+连续形式： $$ \begin{gathered} (f\ast g)(t)\overset{def}{=}\int_{-\infty}^{&#43;\infty}f(\tau)g(t-\tau)d\tau \end{gathered} $$
+离散形式： $$ \begin{gathered} (f\ast g)(t)=\sum_{\tau=-\infty}^{\infty}f(\tau)g(t-\tau) \end{gathered} $$ 🤔这个式子可能有点难以理解，下面将通过几个例子说明
+ 不过注意的是下面便于理解的方式都是建立在丢弃了什么的基础上的，若想进一步理解，请学习相关课程
+ 从一个小球开始  本篇文章源自Understanding Convolutions作者的这种思路非常巧妙。
+  想象一个小球从一定高度落到地面（地面为一维），如果你把一个球丢出去，然后再从落地的地方再扔出去，那么它距离原始点的距离$C$的可能性有多大？
+ 分析一下这个过程。在第一次掉落后，它会以$f(a)$的概率落在离起点$a$个单位距离的地方，其中$f$为概率分布。
+ 在第一次下落后，再从上一次下落的地方以另一个高度扔下去。以新起点滚动的$b$单位的概率是$g(b)$，其中$g$可能是不同的分布。如同下图所示。
+ 如果我们固定了第一次下落的结果，这样我们就知道了球移动的距离$a$，对于球移动的总距离$c$，第二次下落的距离也固定在$b$，其中$a&#43;b=c$。所以这个发生的概率就是$f(a)\cdot g(b)$。
+ 让我们看一下更加具体的例子吧。我们想要总距离$c$等于3，如果第一次$a=2$，则第二次必定$b=1$，则概率便是$f(2)\cdot g(1)$。
+ 但是，很明显不可能只有这一种情况，只要$a&#43;b=3$，都是可以的，如下面两种情况。
+ 概率分别是$f(1)\cdot g(2)$和$f(0)\cdot g(3)$。
+ 为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下： $$ \begin{gathered} \dots f(0)\cdot g(3)&#43;f(1)\cdot g(2)&#43;f(2)\cdot g(1) \dots \end{gathered} $$ 更加便捷的写法为： $$ \begin{gathered} \sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为： $$ \begin{gathered} (f\ast g)(c)=\sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 如果我们代入$b=c-a$，于是得到： $$ \begin{gathered} (f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)} \end{gathered} $$ 在这里我们实际上已经推导出了卷积的离散形式'><title>卷积与神经网络</title>
+
+<link rel='canonical' href='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='卷积与神经网络'>
+<meta property='og:description' content='理解卷积   在泛函分析中，卷积（又称叠积（convolution）、褶积或旋积），是透过两个函数 f 和 g 生成第三个函数的一种数学算子，表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积。
+  以上源自卷积 - 维基百科的介绍。
+定义
+设$f(x)、g(x)$是定义在$\mathbb{R}^{n}$上的可测函数，$f$与$g$的卷积记作$f\ast g$，它是其中一个函数翻转，并平移后，与另一个函数的乘积的积分，是一个对平移量的函数，有
+连续形式： $$ \begin{gathered} (f\ast g)(t)\overset{def}{=}\int_{-\infty}^{&#43;\infty}f(\tau)g(t-\tau)d\tau \end{gathered} $$
+离散形式： $$ \begin{gathered} (f\ast g)(t)=\sum_{\tau=-\infty}^{\infty}f(\tau)g(t-\tau) \end{gathered} $$ 🤔这个式子可能有点难以理解，下面将通过几个例子说明
+ 不过注意的是下面便于理解的方式都是建立在丢弃了什么的基础上的，若想进一步理解，请学习相关课程
+ 从一个小球开始  本篇文章源自Understanding Convolutions作者的这种思路非常巧妙。
+  想象一个小球从一定高度落到地面（地面为一维），如果你把一个球丢出去，然后再从落地的地方再扔出去，那么它距离原始点的距离$C$的可能性有多大？
+ 分析一下这个过程。在第一次掉落后，它会以$f(a)$的概率落在离起点$a$个单位距离的地方，其中$f$为概率分布。
+ 在第一次下落后，再从上一次下落的地方以另一个高度扔下去。以新起点滚动的$b$单位的概率是$g(b)$，其中$g$可能是不同的分布。如同下图所示。
+ 如果我们固定了第一次下落的结果，这样我们就知道了球移动的距离$a$，对于球移动的总距离$c$，第二次下落的距离也固定在$b$，其中$a&#43;b=c$。所以这个发生的概率就是$f(a)\cdot g(b)$。
+ 让我们看一下更加具体的例子吧。我们想要总距离$c$等于3，如果第一次$a=2$，则第二次必定$b=1$，则概率便是$f(2)\cdot g(1)$。
+ 但是，很明显不可能只有这一种情况，只要$a&#43;b=3$，都是可以的，如下面两种情况。
+ 概率分别是$f(1)\cdot g(2)$和$f(0)\cdot g(3)$。
+ 为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下： $$ \begin{gathered} \dots f(0)\cdot g(3)&#43;f(1)\cdot g(2)&#43;f(2)\cdot g(1) \dots \end{gathered} $$ 更加便捷的写法为： $$ \begin{gathered} \sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为： $$ \begin{gathered} (f\ast g)(c)=\sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 如果我们代入$b=c-a$，于是得到： $$ \begin{gathered} (f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)} \end{gathered} $$ 在这里我们实际上已经推导出了卷积的离散形式'>
+<meta property='og:url' content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/'>
+<meta property='og:site_name' content='PuQing Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='原理' /><meta property='article:published_time' content='2021-05-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv.png' />
+<meta name="twitter:title" content="卷积与神经网络">
+<meta name="twitter:description" content="理解卷积   在泛函分析中，卷积（又称叠积（convolution）、褶积或旋积），是透过两个函数 f 和 g 生成第三个函数的一种数学算子，表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积。
+  以上源自卷积 - 维基百科的介绍。
+定义
+设$f(x)、g(x)$是定义在$\mathbb{R}^{n}$上的可测函数，$f$与$g$的卷积记作$f\ast g$，它是其中一个函数翻转，并平移后，与另一个函数的乘积的积分，是一个对平移量的函数，有
+连续形式： $$ \begin{gathered} (f\ast g)(t)\overset{def}{=}\int_{-\infty}^{&#43;\infty}f(\tau)g(t-\tau)d\tau \end{gathered} $$
+离散形式： $$ \begin{gathered} (f\ast g)(t)=\sum_{\tau=-\infty}^{\infty}f(\tau)g(t-\tau) \end{gathered} $$ 🤔这个式子可能有点难以理解，下面将通过几个例子说明
+ 不过注意的是下面便于理解的方式都是建立在丢弃了什么的基础上的，若想进一步理解，请学习相关课程
+ 从一个小球开始  本篇文章源自Understanding Convolutions作者的这种思路非常巧妙。
+  想象一个小球从一定高度落到地面（地面为一维），如果你把一个球丢出去，然后再从落地的地方再扔出去，那么它距离原始点的距离$C$的可能性有多大？
+ 分析一下这个过程。在第一次掉落后，它会以$f(a)$的概率落在离起点$a$个单位距离的地方，其中$f$为概率分布。
+ 在第一次下落后，再从上一次下落的地方以另一个高度扔下去。以新起点滚动的$b$单位的概率是$g(b)$，其中$g$可能是不同的分布。如同下图所示。
+ 如果我们固定了第一次下落的结果，这样我们就知道了球移动的距离$a$，对于球移动的总距离$c$，第二次下落的距离也固定在$b$，其中$a&#43;b=c$。所以这个发生的概率就是$f(a)\cdot g(b)$。
+ 让我们看一下更加具体的例子吧。我们想要总距离$c$等于3，如果第一次$a=2$，则第二次必定$b=1$，则概率便是$f(2)\cdot g(1)$。
+ 但是，很明显不可能只有这一种情况，只要$a&#43;b=3$，都是可以的，如下面两种情况。
+ 概率分别是$f(1)\cdot g(2)$和$f(0)\cdot g(3)$。
+ 为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下： $$ \begin{gathered} \dots f(0)\cdot g(3)&#43;f(1)\cdot g(2)&#43;f(2)\cdot g(1) \dots \end{gathered} $$ 更加便捷的写法为： $$ \begin{gathered} \sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为： $$ \begin{gathered} (f\ast g)(c)=\sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 如果我们代入$b=c-a$，于是得到： $$ \begin{gathered} (f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)} \end{gathered} $$ 在这里我们实际上已经推导出了卷积的离散形式"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv.png' />
+    <link rel="shortcut icon" href="img/avatar.jpg" />
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucc425954bc910cf36f6081524e70ddb0_1728_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">✨</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://puqing.work">PuQing Site</a></h1>
+        <h2 class="site-description">Stand Alone Complex.</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://puqing.work" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                <img src="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv_huccf179966149b2a432ced935769eb06a_8168_800x0_resize_box_2.png"
+                        srcset="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv_huccf179966149b2a432ced935769eb06a_8168_800x0_resize_box_2.png 800w, /p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv_huccf179966149b2a432ced935769eb06a_8168_1600x0_resize_box_2.png 1600w"
+                        width="800" 
+                        height="178" 
+                        loading="lazy"
+                        alt="Featured image of post 卷积与神经网络" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" >
+                深度学习
+            </a>
+        
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" >
+                机器视觉
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">卷积与神经网络</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">May 05, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h1 id="理解卷积">理解卷积</h1>
+<blockquote>
+<p>  在泛函分析中，卷积（又称叠积（convolution）、褶积或旋积），是透过两个函数 f 和 g 生成第三个函数的一种数学算子，表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积。</p>
+</blockquote>
+<p>  以上源自<a class="link" href="https://zh.wikipedia.org/wiki/%e5%8d%b7%e7%a7%af"  target="_blank" rel="noopener"
+    >卷积 - 维基百科</a>的介绍。</p>
+<p><strong>定义</strong></p>
+<p>设$f(x)、g(x)$是定义在$\mathbb{R}^{n}$上的可测函数，$f$与$g$的卷积记作$f\ast g$，它是其中一个函数翻转，并平移后，与另一个函数的乘积的积分，是一个对平移量的函数，有</p>
+<p>连续形式：
+$$
+\begin{gathered}
+(f\ast g)(t)\overset{def}{=}\int_{-\infty}^{+\infty}f(\tau)g(t-\tau)d\tau
+\end{gathered}
+$$</p>
+<p>离散形式：
+$$
+\begin{gathered}
+(f\ast g)(t)=\sum_{\tau=-\infty}^{\infty}f(\tau)g(t-\tau)
+\end{gathered}
+$$
+  🤔这个式子可能有点难以理解，下面将通过几个例子说明</p>
+<blockquote>
+<p>不过注意的是下面便于理解的方式都是建立在丢弃了什么的基础上的，若想进一步理解，请学习相关课程</p>
+</blockquote>
+<h2 id="从一个小球开始">从一个小球开始</h2>
+<blockquote>
+<p>本篇文章源自<a class="link" href="http://colah.github.io/posts/2014-07-Understanding-Convolutions/"  target="_blank" rel="noopener"
+    >Understanding Convolutions</a>作者的这种思路非常巧妙。</p>
+</blockquote>
+<p>  想象一个小球从一定高度落到地面（地面为一维），<strong>如果你把一个球丢出去，然后再从落地的地方再扔出去，那么它距离原始点的距离$C$的可能性有多大？</strong></p>
+<p>  分析一下这个过程。在第一次掉落后，它会以$f(a)$的概率落在离起点$a$个单位距离的地方，其中$f$为概率分布。</p>
+<p>  在第一次下落后，再从上一次下落的地方以另一个高度扔下去。以新起点滚动的$b$单位的概率是$g(b)$，其中$g$可能是不同的分布。如同下图所示。</p>
+<p><img src="https://i.im5i.com/2021/05/05/wMMsy.png" alt="小球投下"  /></p>
+<p>  如果我们固定了第一次下落的结果，这样我们就知道了球移动的距离$a$，对于球移动的总距离$c$，第二次下落的距离也固定在$b$，其中$a+b=c$。所以这个发生的概率就是$f(a)\cdot g(b)$。</p>
+<p>  让我们看一下更加具体的例子吧。我们想要总距离$c$等于3，如果第一次$a=2$，则第二次必定$b=1$，则概率便是$f(2)\cdot g(1)$。</p>
+<p>  但是，很明显不可能只有这一种情况，只要$a+b=3$，都是可以的，如下面两种情况。</p>
+<p><img src="https://i.im5i.com/2021/05/05/wMO3O.png" alt=""  /></p>
+<p>  概率分别是$f(1)\cdot g(2)$和$f(0)\cdot g(3)$。</p>
+<p>  为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下：
+$$
+\begin{gathered}
+\dots f(0)\cdot g(3)+f(1)\cdot g(2)+f(2)\cdot g(1) \dots
+\end{gathered}
+$$
+  更加便捷的写法为：
+$$
+\begin{gathered}
+\sum_{a+b=c}{f(a)\cdot g(b)}
+\end{gathered}
+$$
+  这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为：
+$$
+\begin{gathered}
+(f\ast g)(c)=\sum_{a+b=c}{f(a)\cdot g(b)}
+\end{gathered}
+$$
+  如果我们代入$b=c-a$，于是得到：
+$$
+\begin{gathered}
+(f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)}
+\end{gathered}
+$$
+  在这里我们实际上已经推导出了卷积的离散形式</p>
+<p>  还记得我开头说的话吗，这种方法虽然好推导，但是它的含义已经偏移了传统意义上的卷积。但是它带给我们的启发是卷积的目的似乎是让整体满足某种约束条件，即上述的$a+b=c$。</p>
+<p>  下面用另一种视角来看待卷积过程。</p>
+<h2 id="十根蜡烛的燃烧">十根蜡烛的燃烧</h2>
+<blockquote>
+<p>本文思路源自<a class="link" href="https://www.bilibili.com/video/BV1JX4y1K7Dr?from=search&amp;seid=18405369116670801160"  target="_blank" rel="noopener"
+    >卷积究竟卷了啥？</a>视频，非常NICE</p>
+</blockquote>
+<p>  假设你有十根蜡烛，一根蜡烛燃烧为10分钟。现在问：在第0分钟点燃一根蜡烛，在第4分钟点燃4根蜡烛，在第5分钟点燃3根蜡烛，在第9分钟点燃2根蜡烛（哎，我就是不好好点，就是玩儿），经过$t$时刻剩下蜡烛的总质量？</p>
+<p>  先将蜡烛燃烧的函数$\mathbf{g}$表示出来：</p>
+<p><img src="https://i.im5i.com/2021/05/05/wO0yw.png" alt=""  /></p>
+<p>  横坐标表示时间，纵坐标表示一根蜡烛的单位质量随燃烧时间的变化。点燃蜡烛的数量关于时间的关系可表示为函数$f$</p>
+<p><img src="https://i.im5i.com/2021/05/05/wODRZ.png" alt=""  /></p>
+<p>  其中纵坐标表示在该时刻新点燃蜡烛的数量。</p>
+<p>  求解该问题关键在于$t$时刻蜡烛的总质量不仅是该时刻新点燃蜡烛的质量乘以数量，还要加上经过$t$时间后，之前点燃蜡烛剩余的质量。</p>
+<p>  为便于求解，不妨先设$t$为6分钟。分析这个问题，我们不妨跟随$\tau$变量的变化，来看各个蜡烛的质量。同时我们注意到十个蜡烛可分为四类：<code>在第0分钟点燃的一根蜡烛</code>，<code>在第4分钟点燃的4根蜡烛</code>，<code>在第5分钟点燃的3根蜡烛</code>，<code>在第9分钟点燃的2根蜡烛</code>。我们把他们分为四个“状态”，可以用列表列出每个“状态”随时间变化的剩余质量。并使用类似于$7^{n}$来表示该状态有$n$个蜡烛，下表展示了各种状态的蜡烛随时间变化的过程。（这个表示有点不太直观，改天改改）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$\tau$</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">状态1</td>
+<td style="text-align:center">$g(0)^{1}$</td>
+<td style="text-align:center">$g(1)^{1}$</td>
+<td style="text-align:center">$g(2)^{1}$</td>
+<td style="text-align:center">$g(3)^{1}$</td>
+<td style="text-align:center">$g(4)^{1}$</td>
+<td style="text-align:center">$g(5)^{1}$</td>
+<td style="text-align:center">$g(6)^{1}$</td>
+</tr>
+<tr>
+<td style="text-align:center">状态2</td>
+<td style="text-align:center">$g(-4)^{4}$</td>
+<td style="text-align:center">$g(-3)^{4}$</td>
+<td style="text-align:center">$g(-2)^{4}$</td>
+<td style="text-align:center">$g(-1)^{4}$</td>
+<td style="text-align:center">$g(0)^{4}$</td>
+<td style="text-align:center">$g(1)^{4}$</td>
+<td style="text-align:center">$g(2)^{4}$</td>
+</tr>
+<tr>
+<td style="text-align:center">状态3</td>
+<td style="text-align:center">$g(-5)^{3}$</td>
+<td style="text-align:center">$g(-4)^{3}$</td>
+<td style="text-align:center">$g(-3)^{3}$</td>
+<td style="text-align:center">$g(-2)^{3}$</td>
+<td style="text-align:center">$g(-1)^{3}$</td>
+<td style="text-align:center">$g(0)^{3}$</td>
+<td style="text-align:center">$g(1)^{3}$</td>
+</tr>
+<tr>
+<td style="text-align:center">状态4</td>
+<td style="text-align:center">$g(-9)^{2}$</td>
+<td style="text-align:center">$g(-8)^{2}$</td>
+<td style="text-align:center">$g(-7)^{2}$</td>
+<td style="text-align:center">$g(-6)^{2}$</td>
+<td style="text-align:center">$g(-5)^{2}$</td>
+<td style="text-align:center">$g(-4)^{2}$</td>
+<td style="text-align:center">$g(-3)^{2}$</td>
+</tr>
+</tbody>
+</table>
+<p>  对于这里的$g()$中的负数也是有含义的，由于$\tau=0$时刻对于状态2的蜡烛是没有点燃的，但是在$4$后被点燃，即此时状态2的质量为$g(-4)^{4}$。</p>
+<p>  通过表格我们可以直观的看到在$t=6$时剩余蜡烛的质量等于：
+$$
+\begin{gathered}
+W(6)=1\cdot g(6)+4\cdot g(2)+3\cdot g(1)+2\cdot g(-3)
+\end{gathered}
+$$</p>
+<p>  应该这样理解这个式子，在$\tau=0$时响应（哎，我为什么说响应）/点燃的蜡烛，等到$\tau=6$时，其剩余的质量应为$g(6)$；而在$\tau=4$点燃的蜡烛，等到$\tau=6$时，其质量为$g(6-\tau)=g(2)$，因为对于这个状态的蜡烛而言，仅过了2S；其他同理。根据我们上述的推导，可以写出如下式子：
+$$
+\begin{aligned}
+W(6)&amp;=f(0)g(6-0)+f(1)g(6-1)+\dots+f(6)g(6-6)\cr
+&amp;=\sum_{6}f(\tau)g(6-\tau)\cr
+\end{aligned}
+$$</p>
+<p>  我们将$t=6$推广到$t$于是便有
+$$
+\begin{aligned}
+W(t)=\sum_{t}&amp;f(\tau)g(t-\tau)\cr
+&amp;\Downarrow \cr
+(f\ast g)(t)=\sum_{t}&amp;f(\tau)g(t-\tau)
+\end{aligned}
+$$
+  下面我制作了一个动画（$Matlab\ YES！！$）来帮助李姐，绿色线表示随时间变化的总剩余质量，图像里的$y$轴表示蜡烛的单位质量。</p>
+<p><img src="https://i.im5i.com/2021/05/06/wkOdd.gif" alt=""  /></p>
+<p>  这个例子告诉我们卷积似乎意味着$延时 \to 倍加\to 求和$的过程，它描述了一个输入信号$f(t)$，经过一个线性系统（其特征可以用单位冲激响应函数$g(t)$描述）以后，输出的信号是什么。</p>
+<h2 id="系统讲述">系统讲述</h2>
+<p>  </p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E5%8E%9F%E7%90%86/">原理</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="AndPuQing/commit"
+        issue-term="title"
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.body.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 PuQing Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

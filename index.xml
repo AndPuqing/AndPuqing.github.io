@@ -126,6 +126,175 @@ $$&lt;/li&gt;
 </description>
         </item>
         <item>
+        <title>卷积与神经网络</title>
+        <link>https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
+        <pubDate>Wed, 05 May 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</guid>
+        <description>&lt;img src="https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv.png" alt="Featured image of post 卷积与神经网络" /&gt;&lt;h1 id=&#34;理解卷积&#34;&gt;理解卷积&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;  在泛函分析中，卷积（又称叠积（convolution）、褶积或旋积），是透过两个函数 f 和 g 生成第三个函数的一种数学算子，表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  以上源自&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/wiki/%e5%8d%b7%e7%a7%af&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;卷积 - 维基百科&lt;/a&gt;的介绍。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设$f(x)、g(x)$是定义在$\mathbb{R}^{n}$上的可测函数，$f$与$g$的卷积记作$f\ast g$，它是其中一个函数翻转，并平移后，与另一个函数的乘积的积分，是一个对平移量的函数，有&lt;/p&gt;
+&lt;p&gt;连续形式：
+$$
+\begin{gathered}
+(f\ast g)(t)\overset{def}{=}\int_{-\infty}^{+\infty}f(\tau)g(t-\tau)d\tau
+\end{gathered}
+$$&lt;/p&gt;
+&lt;p&gt;离散形式：
+$$
+\begin{gathered}
+(f\ast g)(t)=\sum_{\tau=-\infty}^{\infty}f(\tau)g(t-\tau)
+\end{gathered}
+$$
+  🤔这个式子可能有点难以理解，下面将通过几个例子说明&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不过注意的是下面便于理解的方式都是建立在丢弃了什么的基础上的，若想进一步理解，请学习相关课程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;从一个小球开始&#34;&gt;从一个小球开始&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本篇文章源自&lt;a class=&#34;link&#34; href=&#34;http://colah.github.io/posts/2014-07-Understanding-Convolutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Understanding Convolutions&lt;/a&gt;作者的这种思路非常巧妙。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  想象一个小球从一定高度落到地面（地面为一维），&lt;strong&gt;如果你把一个球丢出去，然后再从落地的地方再扔出去，那么它距离原始点的距离$C$的可能性有多大？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;  分析一下这个过程。在第一次掉落后，它会以$f(a)$的概率落在离起点$a$个单位距离的地方，其中$f$为概率分布。&lt;/p&gt;
+&lt;p&gt;  在第一次下落后，再从上一次下落的地方以另一个高度扔下去。以新起点滚动的$b$单位的概率是$g(b)$，其中$g$可能是不同的分布。如同下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/05/05/wMMsy.png&#34; alt=&#34;小球投下&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;  如果我们固定了第一次下落的结果，这样我们就知道了球移动的距离$a$，对于球移动的总距离$c$，第二次下落的距离也固定在$b$，其中$a+b=c$。所以这个发生的概率就是$f(a)\cdot g(b)$。&lt;/p&gt;
+&lt;p&gt;  让我们看一下更加具体的例子吧。我们想要总距离$c$等于3，如果第一次$a=2$，则第二次必定$b=1$，则概率便是$f(2)\cdot g(1)$。&lt;/p&gt;
+&lt;p&gt;  但是，很明显不可能只有这一种情况，只要$a+b=3$，都是可以的，如下面两种情况。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/05/05/wMO3O.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;  概率分别是$f(1)\cdot g(2)$和$f(0)\cdot g(3)$。&lt;/p&gt;
+&lt;p&gt;  为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下：
+$$
+\begin{gathered}
+\dots f(0)\cdot g(3)+f(1)\cdot g(2)+f(2)\cdot g(1) \dots
+\end{gathered}
+$$
+  更加便捷的写法为：
+$$
+\begin{gathered}
+\sum_{a+b=c}{f(a)\cdot g(b)}
+\end{gathered}
+$$
+  这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为：
+$$
+\begin{gathered}
+(f\ast g)(c)=\sum_{a+b=c}{f(a)\cdot g(b)}
+\end{gathered}
+$$
+  如果我们代入$b=c-a$，于是得到：
+$$
+\begin{gathered}
+(f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)}
+\end{gathered}
+$$
+  在这里我们实际上已经推导出了卷积的离散形式&lt;/p&gt;
+&lt;p&gt;  还记得我开头说的话吗，这种方法虽然好推导，但是它的含义已经偏移了传统意义上的卷积。但是它带给我们的启发是卷积的目的似乎是让整体满足某种约束条件，即上述的$a+b=c$。&lt;/p&gt;
+&lt;p&gt;  下面用另一种视角来看待卷积过程。&lt;/p&gt;
+&lt;h2 id=&#34;十根蜡烛的燃烧&#34;&gt;十根蜡烛的燃烧&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文思路源自&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1JX4y1K7Dr?from=search&amp;amp;seid=18405369116670801160&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;卷积究竟卷了啥？&lt;/a&gt;视频，非常NICE&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  假设你有十根蜡烛，一根蜡烛燃烧为10分钟。现在问：在第0分钟点燃一根蜡烛，在第4分钟点燃4根蜡烛，在第5分钟点燃3根蜡烛，在第9分钟点燃2根蜡烛（哎，我就是不好好点，就是玩儿），经过$t$时刻剩下蜡烛的总质量？&lt;/p&gt;
+&lt;p&gt;  先将蜡烛燃烧的函数$\mathbf{g}$表示出来：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/05/05/wO0yw.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;  横坐标表示时间，纵坐标表示一根蜡烛的单位质量随燃烧时间的变化。点燃蜡烛的数量关于时间的关系可表示为函数$f$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/05/05/wODRZ.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;  其中纵坐标表示在该时刻新点燃蜡烛的数量。&lt;/p&gt;
+&lt;p&gt;  求解该问题关键在于$t$时刻蜡烛的总质量不仅是该时刻新点燃蜡烛的质量乘以数量，还要加上经过$t$时间后，之前点燃蜡烛剩余的质量。&lt;/p&gt;
+&lt;p&gt;  为便于求解，不妨先设$t$为6分钟。分析这个问题，我们不妨跟随$\tau$变量的变化，来看各个蜡烛的质量。同时我们注意到十个蜡烛可分为四类：&lt;code&gt;在第0分钟点燃的一根蜡烛&lt;/code&gt;，&lt;code&gt;在第4分钟点燃的4根蜡烛&lt;/code&gt;，&lt;code&gt;在第5分钟点燃的3根蜡烛&lt;/code&gt;，&lt;code&gt;在第9分钟点燃的2根蜡烛&lt;/code&gt;。我们把他们分为四个“状态”，可以用列表列出每个“状态”随时间变化的剩余质量。并使用类似于$7^{n}$来表示该状态有$n$个蜡烛，下表展示了各种状态的蜡烛随时间变化的过程。（这个表示有点不太直观，改天改改）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;$\tau$&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;0&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;1&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;2&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;3&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;4&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;5&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;6&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;状态1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(0)^{1}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(1)^{1}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(2)^{1}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(3)^{1}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(4)^{1}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(5)^{1}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(6)^{1}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;状态2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-4)^{4}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-3)^{4}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-2)^{4}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-1)^{4}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(0)^{4}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(1)^{4}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(2)^{4}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;状态3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-5)^{3}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-4)^{3}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-3)^{3}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-2)^{3}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-1)^{3}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(0)^{3}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(1)^{3}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;状态4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-9)^{2}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-8)^{2}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-7)^{2}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-6)^{2}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-5)^{2}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-4)^{2}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$g(-3)^{2}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;  对于这里的$g()$中的负数也是有含义的，由于$\tau=0$时刻对于状态2的蜡烛是没有点燃的，但是在$4$后被点燃，即此时状态2的质量为$g(-4)^{4}$。&lt;/p&gt;
+&lt;p&gt;  通过表格我们可以直观的看到在$t=6$时剩余蜡烛的质量等于：
+$$
+\begin{gathered}
+W(6)=1\cdot g(6)+4\cdot g(2)+3\cdot g(1)+2\cdot g(-3)
+\end{gathered}
+$$&lt;/p&gt;
+&lt;p&gt;  应该这样理解这个式子，在$\tau=0$时响应（哎，我为什么说响应）/点燃的蜡烛，等到$\tau=6$时，其剩余的质量应为$g(6)$；而在$\tau=4$点燃的蜡烛，等到$\tau=6$时，其质量为$g(6-\tau)=g(2)$，因为对于这个状态的蜡烛而言，仅过了2S；其他同理。根据我们上述的推导，可以写出如下式子：
+$$
+\begin{aligned}
+W(6)&amp;amp;=f(0)g(6-0)+f(1)g(6-1)+\dots+f(6)g(6-6)\cr
+&amp;amp;=\sum_{6}f(\tau)g(6-\tau)\cr
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;  我们将$t=6$推广到$t$于是便有
+$$
+\begin{aligned}
+W(t)=\sum_{t}&amp;amp;f(\tau)g(t-\tau)\cr
+&amp;amp;\Downarrow \cr
+(f\ast g)(t)=\sum_{t}&amp;amp;f(\tau)g(t-\tau)
+\end{aligned}
+$$
+  下面我制作了一个动画（$Matlab\ YES！！$）来帮助李姐，绿色线表示随时间变化的总剩余质量，图像里的$y$轴表示蜡烛的单位质量。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.im5i.com/2021/05/06/wkOdd.gif&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;  这个例子告诉我们卷积似乎意味着$延时 \to 倍加\to 求和$的过程，它描述了一个输入信号$f(t)$，经过一个线性系统（其特征可以用单位冲激响应函数$g(t)$描述）以后，输出的信号是什么。&lt;/p&gt;
+&lt;h2 id=&#34;系统讲述&#34;&gt;系统讲述&lt;/h2&gt;
+&lt;p&gt;  &lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>从参数方程到二次曲面</title>
         <link>https://puqing.work/p/%E4%BB%8E%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E5%88%B0%E4%BA%8C%E6%AC%A1%E6%9B%B2%E9%9D%A2/</link>
         <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
@@ -343,6 +512,18 @@ $$
     &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Child</title>
+        <link>https://puqing.work/p/child/</link>
+        <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://puqing.work/p/child/</guid>
+        <description>&lt;img src="https://puqing.work/p/child/pink.jpg" alt="Featured image of post Child" /&gt;&lt;blockquote&gt;
+&lt;p&gt;小学使出吃奶的劲才过网的排球，&lt;/p&gt;
+&lt;p&gt;今天居然一拳轰飞了，不禁感&lt;strong&gt;Time&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
         </item>
         <item>
         <title>Markdown Syntax Guide</title>
