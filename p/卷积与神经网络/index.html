@@ -58,8 +58,6 @@
  概率分别是$f(1)\cdot g(2)$和$f(0)\cdot g(3)$。
  为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下： $$ \begin{gathered} \dots f(0)\cdot g(3)&#43;f(1)\cdot g(2)&#43;f(2)\cdot g(1) \dots \end{gathered} $$ 更加便捷的写法为： $$ \begin{gathered} \sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为： $$ \begin{gathered} (f\ast g)(c)=\sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 如果我们代入$b=c-a$，于是得到： $$ \begin{gathered} (f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)} \end{gathered} $$ 在这里我们实际上已经推导出了卷积的离散形式"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv.png' />
-    <link rel="shortcut icon" href="img/avatar.jpg" />
-
     </head>
     <body class="">
     <script>
