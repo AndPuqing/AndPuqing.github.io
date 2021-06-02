@@ -6,7 +6,16 @@
     <description>Recent content in Categories on PuQing Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL Server数据库</title>
+      <link>https://puqing.work/categories/sql-server%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://puqing.work/categories/sql-server%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>高等数学</title>
       <link>https://puqing.work/categories/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</link>
