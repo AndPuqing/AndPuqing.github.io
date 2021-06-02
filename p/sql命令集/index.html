@@ -2,40 +2,41 @@
 <html lang="en-us">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='仅供复习用
-第二章 --创建数据库 CREATEDATABASEdatabase_nameON(NAME=logical_file_name,FILENAME...)LOGON(NAME=logical_file_name,FILENAME...)--修改数据课信息 ALTERDATABASEdatabase_name{ADDFILE&amp;lt;filespec&amp;gt;--添加数据文件 MODIFYFILE&amp;lt;filespec&amp;gt;--修改数据文件 MODIFYNAME=new_dbname--修改数据库名 }--手动收缩数据库 DBSSSHRINKDATABASE(database_name,[target_percent])--修改数据库名 sp_renamedb原,新--删除数据库 DROPDATABASEdbname--查看数据库信息 sp_helpdb[数据库名]第三章 --创建表 CREATETABLE&amp;lt;表名&amp;gt;(&amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[NULL|NOTNULL][IDENTITY[(seed,increment)]][{&amp;lt;约束&amp;gt;}])--修改表 ALTERTABLE&amp;lt;表名&amp;gt;(ADD&amp;lt;列定义&amp;gt;--添加字段 DROPCOLUMN&amp;lt;列名&amp;gt;--删除字段 ALTERCOLUMN&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt;--修改列属性 )--修改列名 Sp_rename&amp;#39;Student.Sdept&amp;#39;,&amp;#39;系别&amp;#39;,&amp;#39;column&amp;#39;以下用实列代替标准写法
+数据库的创建和管理 --创建数据库 CREATEDATABASEdatabase_nameON(NAME=logical_file_name,FILENAME...)LOGON(NAME=logical_file_name,FILENAME...)--修改数据课信息 ALTERDATABASEdatabase_name{ADDFILE&amp;lt;filespec&amp;gt;--添加数据文件 MODIFYFILE&amp;lt;filespec&amp;gt;--修改数据文件 MODIFYNAME=new_dbname--修改数据库名 }--手动收缩数据库 DBSSSHRINKDATABASE(database_name,[target_percent])--修改数据库名 sp_renamedb原,新--删除数据库 DROPDATABASEdbname--查看数据库信息 sp_helpdb[数据库名]数据表的创建和管理 --创建表 CREATETABLE&amp;lt;表名&amp;gt;(&amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[NULL|NOTNULL][IDENTITY[(seed,increment)]][{&amp;lt;约束&amp;gt;}])--修改表 ALTERTABLE&amp;lt;表名&amp;gt;(ADD&amp;lt;列定义&amp;gt;--添加字段 DROPCOLUMN&amp;lt;列名&amp;gt;--删除字段 ALTERCOLUMN&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt;--修改列属性 )--修改列名 Sp_rename&amp;#39;Student.Sdept&amp;#39;,&amp;#39;系别&amp;#39;,&amp;#39;column&amp;#39;以下用实列代替标准写法
 --删除表 DROPTABLECourse--改表名 sp_rename&amp;#39;Student&amp;#39;,&amp;#39;Newstudent&amp;#39;约束 在SQL Server中有五种约束：
  主键约束（Primary Key） 唯一性约束（Unique） 检查约束（Check） 默认值约束（Default） 外键约束（Foreign Key）  而根据声明的形式又可分为列级约束,表级约束.
 关于二者的区别，直接用图吧。
 二者区别
 由上图所知主键、外键、唯一、检查这四项，既可以创建列约束，也可以创建表约束。而缺省和非空只能创建列约束。
-约束创建   主键约束
---在创建时创建 CREATETABLECourse(Conchar(6)NOTNULLPRIMARYKEY,)--使用表级创建 CREATETABLECourse(Conchar(6)NOTNULL,Cityvarchar(255),CONSTRAINTpk_ScPRIMARYKEY(Con),CONSTRAINTpk_CCPRIMARYKEY(Con,City))--在现有表创建 ALTERTABLESCADDCONSTRAINTPK_SPRIMARYKEY(Con,City)  '><title>SQL命令集</title>
+约束创建  主键约束  --在创建时创建 CREATETABLECourse(Conchar(6)NOTNULLPRIMARYKEY,)--使用表级创建 CREATETABLECourse(Conchar(6)NOTNULL,Cityvarchar(255),CONSTRAINTpk_ScPRIMARYKEY(Con),CONSTRAINTpk_CCPRIMARYKEY(Con,City))--在现有表创建 ALTERTABLESCADDCONSTRAINTPK_SPRIMARYKEY(Con,City)--删除约束 DROPCONSTRAINTPK_S 似乎在SQL Server 2012中可以允许不指定约束名，而直接创建，但为了规范还是指定约束名。
+ 外键约束  --在创建时创建 CREATETABLESC(SonintFOREIGNKEYREFERENCESstudent(Sno))--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTfk_pFOREIGNKEY(Sno)REFERENCESstudent(Sno))--在现有表创建 --不指定名 ALTERTABLESCADDFOREIGNKEY(Con)REFERENCESstudent(Cno)--指定名 ALTERTABLESCADDCONSTRAINTfk_perFOREIGNKEY(Con)REFERENCESstudent(Cno)唯一约束   唯一约束与主键约束的区别在于可以为NULL 可以为多个  --在创建时创建 CREATETABLESC(SonintUNIQUE)--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTuc_pUNIQUE(Son,City))--在现有表创建 --不指定名 ALTERTABLESCADDUNIQUE(Sno)--指定名 ALTERTABLESCADDCONSTRAINTuc_pUNIQUE(Cno)检测约束  --在创建时创建 CREATETABLESC(SonintCHECK(Sno&amp;gt;0))--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTuc_pUNIQUE(Son&amp;gt;0andCity=&amp;#39;changde&amp;#39;))--在现有表创建 --不指定名 ALTERTABLESCADDCHECK(Sno&amp;gt;0)--指定名 ALTERTABLESCADDCONSTRAINTuc_pCHECK(Cno&amp;gt;0)默认值约束  CREATETABLEPersons(Id_PintNOTNULL,Cityvarchar(255)DEFAULT&amp;#39;Sandnes&amp;#39;)--还可以这样玩 CREATETABLEOrders(OrderDatedateDEFAULTGETDATE())--ALTER ALTERTABLEPersonsADDDEFAULT&amp;#39;llala&amp;#39;FORCity小小总结 --创建时 CnointPRIMARYKEYCnointFOREIGNKEYREFERENCESStudent(Cno)CnointUNIQUECnointCHECK(Cno&amp;gt;0)CnointDEFAULT&amp;#39;607&amp;#39;--表级约束 CONSTRAINT&amp;lt;约束名&amp;gt;PRIMARYKEY(COLUMN,)CONSTRAINT&amp;lt;约束名&amp;gt;FOREIGNKEYSnoREFERENCESstudent(Sno)CONSTRAINT&amp;lt;约束名&amp;gt;UNIQUE(Sno)CONSTRAINT&amp;lt;约束名&amp;gt;CHECK(Cno&amp;gt;0andCity=&amp;#39;la&amp;#39;)CONSTRAINT&amp;lt;约束名&amp;gt;DEFAULT&amp;#39;男&amp;#39;FORSex--以上CONSTRAINT和约束名均可省略 --事后型 ALTERTABLE&amp;lt;表名&amp;gt;ADDCONSTRAINT&amp;lt;约束名&amp;gt;PRIMARYKEY(Con,City)ADDCONSTRAINT&amp;lt;约束名&amp;gt;FOREIGNKEYSnoREFERENCESStudent(Sno)ADDCONSTRAINT&amp;lt;约束名&amp;gt;UNIQUE(Con)ADDCONSTRAINT&amp;lt;约束名&amp;gt;CHECK(Cno&amp;gt;0andCity=&amp;#39;la&amp;#39;)ADDCONSTRAINT&amp;lt;约束名&amp;gt;DEFAULT&amp;#39;男&amp;#39;FORSex数据操作 --增 INSERTINTO表名称VALUES(值1,值2,.'><title>SQL命令集</title>
 
 <link rel='canonical' href='https://puqing.work/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='SQL命令集'>
 <meta property='og:description' content='仅供复习用
-第二章 --创建数据库 CREATEDATABASEdatabase_nameON(NAME=logical_file_name,FILENAME...)LOGON(NAME=logical_file_name,FILENAME...)--修改数据课信息 ALTERDATABASEdatabase_name{ADDFILE&amp;lt;filespec&amp;gt;--添加数据文件 MODIFYFILE&amp;lt;filespec&amp;gt;--修改数据文件 MODIFYNAME=new_dbname--修改数据库名 }--手动收缩数据库 DBSSSHRINKDATABASE(database_name,[target_percent])--修改数据库名 sp_renamedb原,新--删除数据库 DROPDATABASEdbname--查看数据库信息 sp_helpdb[数据库名]第三章 --创建表 CREATETABLE&amp;lt;表名&amp;gt;(&amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[NULL|NOTNULL][IDENTITY[(seed,increment)]][{&amp;lt;约束&amp;gt;}])--修改表 ALTERTABLE&amp;lt;表名&amp;gt;(ADD&amp;lt;列定义&amp;gt;--添加字段 DROPCOLUMN&amp;lt;列名&amp;gt;--删除字段 ALTERCOLUMN&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt;--修改列属性 )--修改列名 Sp_rename&amp;#39;Student.Sdept&amp;#39;,&amp;#39;系别&amp;#39;,&amp;#39;column&amp;#39;以下用实列代替标准写法
+数据库的创建和管理 --创建数据库 CREATEDATABASEdatabase_nameON(NAME=logical_file_name,FILENAME...)LOGON(NAME=logical_file_name,FILENAME...)--修改数据课信息 ALTERDATABASEdatabase_name{ADDFILE&amp;lt;filespec&amp;gt;--添加数据文件 MODIFYFILE&amp;lt;filespec&amp;gt;--修改数据文件 MODIFYNAME=new_dbname--修改数据库名 }--手动收缩数据库 DBSSSHRINKDATABASE(database_name,[target_percent])--修改数据库名 sp_renamedb原,新--删除数据库 DROPDATABASEdbname--查看数据库信息 sp_helpdb[数据库名]数据表的创建和管理 --创建表 CREATETABLE&amp;lt;表名&amp;gt;(&amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[NULL|NOTNULL][IDENTITY[(seed,increment)]][{&amp;lt;约束&amp;gt;}])--修改表 ALTERTABLE&amp;lt;表名&amp;gt;(ADD&amp;lt;列定义&amp;gt;--添加字段 DROPCOLUMN&amp;lt;列名&amp;gt;--删除字段 ALTERCOLUMN&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt;--修改列属性 )--修改列名 Sp_rename&amp;#39;Student.Sdept&amp;#39;,&amp;#39;系别&amp;#39;,&amp;#39;column&amp;#39;以下用实列代替标准写法
 --删除表 DROPTABLECourse--改表名 sp_rename&amp;#39;Student&amp;#39;,&amp;#39;Newstudent&amp;#39;约束 在SQL Server中有五种约束：
  主键约束（Primary Key） 唯一性约束（Unique） 检查约束（Check） 默认值约束（Default） 外键约束（Foreign Key）  而根据声明的形式又可分为列级约束,表级约束.
 关于二者的区别，直接用图吧。
 二者区别
 由上图所知主键、外键、唯一、检查这四项，既可以创建列约束，也可以创建表约束。而缺省和非空只能创建列约束。
-约束创建   主键约束
---在创建时创建 CREATETABLECourse(Conchar(6)NOTNULLPRIMARYKEY,)--使用表级创建 CREATETABLECourse(Conchar(6)NOTNULL,Cityvarchar(255),CONSTRAINTpk_ScPRIMARYKEY(Con),CONSTRAINTpk_CCPRIMARYKEY(Con,City))--在现有表创建 ALTERTABLESCADDCONSTRAINTPK_SPRIMARYKEY(Con,City)  '>
+约束创建  主键约束  --在创建时创建 CREATETABLECourse(Conchar(6)NOTNULLPRIMARYKEY,)--使用表级创建 CREATETABLECourse(Conchar(6)NOTNULL,Cityvarchar(255),CONSTRAINTpk_ScPRIMARYKEY(Con),CONSTRAINTpk_CCPRIMARYKEY(Con,City))--在现有表创建 ALTERTABLESCADDCONSTRAINTPK_SPRIMARYKEY(Con,City)--删除约束 DROPCONSTRAINTPK_S 似乎在SQL Server 2012中可以允许不指定约束名，而直接创建，但为了规范还是指定约束名。
+ 外键约束  --在创建时创建 CREATETABLESC(SonintFOREIGNKEYREFERENCESstudent(Sno))--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTfk_pFOREIGNKEY(Sno)REFERENCESstudent(Sno))--在现有表创建 --不指定名 ALTERTABLESCADDFOREIGNKEY(Con)REFERENCESstudent(Cno)--指定名 ALTERTABLESCADDCONSTRAINTfk_perFOREIGNKEY(Con)REFERENCESstudent(Cno)唯一约束   唯一约束与主键约束的区别在于可以为NULL 可以为多个  --在创建时创建 CREATETABLESC(SonintUNIQUE)--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTuc_pUNIQUE(Son,City))--在现有表创建 --不指定名 ALTERTABLESCADDUNIQUE(Sno)--指定名 ALTERTABLESCADDCONSTRAINTuc_pUNIQUE(Cno)检测约束  --在创建时创建 CREATETABLESC(SonintCHECK(Sno&amp;gt;0))--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTuc_pUNIQUE(Son&amp;gt;0andCity=&amp;#39;changde&amp;#39;))--在现有表创建 --不指定名 ALTERTABLESCADDCHECK(Sno&amp;gt;0)--指定名 ALTERTABLESCADDCONSTRAINTuc_pCHECK(Cno&amp;gt;0)默认值约束  CREATETABLEPersons(Id_PintNOTNULL,Cityvarchar(255)DEFAULT&amp;#39;Sandnes&amp;#39;)--还可以这样玩 CREATETABLEOrders(OrderDatedateDEFAULTGETDATE())--ALTER ALTERTABLEPersonsADDDEFAULT&amp;#39;llala&amp;#39;FORCity小小总结 --创建时 CnointPRIMARYKEYCnointFOREIGNKEYREFERENCESStudent(Cno)CnointUNIQUECnointCHECK(Cno&amp;gt;0)CnointDEFAULT&amp;#39;607&amp;#39;--表级约束 CONSTRAINT&amp;lt;约束名&amp;gt;PRIMARYKEY(COLUMN,)CONSTRAINT&amp;lt;约束名&amp;gt;FOREIGNKEYSnoREFERENCESstudent(Sno)CONSTRAINT&amp;lt;约束名&amp;gt;UNIQUE(Sno)CONSTRAINT&amp;lt;约束名&amp;gt;CHECK(Cno&amp;gt;0andCity=&amp;#39;la&amp;#39;)CONSTRAINT&amp;lt;约束名&amp;gt;DEFAULT&amp;#39;男&amp;#39;FORSex--以上CONSTRAINT和约束名均可省略 --事后型 ALTERTABLE&amp;lt;表名&amp;gt;ADDCONSTRAINT&amp;lt;约束名&amp;gt;PRIMARYKEY(Con,City)ADDCONSTRAINT&amp;lt;约束名&amp;gt;FOREIGNKEYSnoREFERENCESStudent(Sno)ADDCONSTRAINT&amp;lt;约束名&amp;gt;UNIQUE(Con)ADDCONSTRAINT&amp;lt;约束名&amp;gt;CHECK(Cno&amp;gt;0andCity=&amp;#39;la&amp;#39;)ADDCONSTRAINT&amp;lt;约束名&amp;gt;DEFAULT&amp;#39;男&amp;#39;FORSex数据操作 --增 INSERTINTO表名称VALUES(值1,值2,.'>
 <meta property='og:url' content='https://puqing.work/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/'>
 <meta property='og:site_name' content='PuQing Site'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='好想学习啊' /><meta property='article:published_time' content='2021-06-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-06-02T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='好想学习啊' /><meta property='article:tag' content='学不动了' /><meta property='article:published_time' content='2021-06-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-06-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://puqing.work/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/Date.jpg' />
 <meta name="twitter:title" content="SQL命令集">
 <meta name="twitter:description" content="仅供复习用
-第二章 --创建数据库 CREATEDATABASEdatabase_nameON(NAME=logical_file_name,FILENAME...)LOGON(NAME=logical_file_name,FILENAME...)--修改数据课信息 ALTERDATABASEdatabase_name{ADDFILE&amp;lt;filespec&amp;gt;--添加数据文件 MODIFYFILE&amp;lt;filespec&amp;gt;--修改数据文件 MODIFYNAME=new_dbname--修改数据库名 }--手动收缩数据库 DBSSSHRINKDATABASE(database_name,[target_percent])--修改数据库名 sp_renamedb原,新--删除数据库 DROPDATABASEdbname--查看数据库信息 sp_helpdb[数据库名]第三章 --创建表 CREATETABLE&amp;lt;表名&amp;gt;(&amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[NULL|NOTNULL][IDENTITY[(seed,increment)]][{&amp;lt;约束&amp;gt;}])--修改表 ALTERTABLE&amp;lt;表名&amp;gt;(ADD&amp;lt;列定义&amp;gt;--添加字段 DROPCOLUMN&amp;lt;列名&amp;gt;--删除字段 ALTERCOLUMN&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt;--修改列属性 )--修改列名 Sp_rename&amp;#39;Student.Sdept&amp;#39;,&amp;#39;系别&amp;#39;,&amp;#39;column&amp;#39;以下用实列代替标准写法
+数据库的创建和管理 --创建数据库 CREATEDATABASEdatabase_nameON(NAME=logical_file_name,FILENAME...)LOGON(NAME=logical_file_name,FILENAME...)--修改数据课信息 ALTERDATABASEdatabase_name{ADDFILE&amp;lt;filespec&amp;gt;--添加数据文件 MODIFYFILE&amp;lt;filespec&amp;gt;--修改数据文件 MODIFYNAME=new_dbname--修改数据库名 }--手动收缩数据库 DBSSSHRINKDATABASE(database_name,[target_percent])--修改数据库名 sp_renamedb原,新--删除数据库 DROPDATABASEdbname--查看数据库信息 sp_helpdb[数据库名]数据表的创建和管理 --创建表 CREATETABLE&amp;lt;表名&amp;gt;(&amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[NULL|NOTNULL][IDENTITY[(seed,increment)]][{&amp;lt;约束&amp;gt;}])--修改表 ALTERTABLE&amp;lt;表名&amp;gt;(ADD&amp;lt;列定义&amp;gt;--添加字段 DROPCOLUMN&amp;lt;列名&amp;gt;--删除字段 ALTERCOLUMN&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt;--修改列属性 )--修改列名 Sp_rename&amp;#39;Student.Sdept&amp;#39;,&amp;#39;系别&amp;#39;,&amp;#39;column&amp;#39;以下用实列代替标准写法
 --删除表 DROPTABLECourse--改表名 sp_rename&amp;#39;Student&amp;#39;,&amp;#39;Newstudent&amp;#39;约束 在SQL Server中有五种约束：
  主键约束（Primary Key） 唯一性约束（Unique） 检查约束（Check） 默认值约束（Default） 外键约束（Foreign Key）  而根据声明的形式又可分为列级约束,表级约束.
 关于二者的区别，直接用图吧。
 二者区别
 由上图所知主键、外键、唯一、检查这四项，既可以创建列约束，也可以创建表约束。而缺省和非空只能创建列约束。
-约束创建   主键约束
---在创建时创建 CREATETABLECourse(Conchar(6)NOTNULLPRIMARYKEY,)--使用表级创建 CREATETABLECourse(Conchar(6)NOTNULL,Cityvarchar(255),CONSTRAINTpk_ScPRIMARYKEY(Con),CONSTRAINTpk_CCPRIMARYKEY(Con,City))--在现有表创建 ALTERTABLESCADDCONSTRAINTPK_SPRIMARYKEY(Con,City)  ">
+约束创建  主键约束  --在创建时创建 CREATETABLECourse(Conchar(6)NOTNULLPRIMARYKEY,)--使用表级创建 CREATETABLECourse(Conchar(6)NOTNULL,Cityvarchar(255),CONSTRAINTpk_ScPRIMARYKEY(Con),CONSTRAINTpk_CCPRIMARYKEY(Con,City))--在现有表创建 ALTERTABLESCADDCONSTRAINTPK_SPRIMARYKEY(Con,City)--删除约束 DROPCONSTRAINTPK_S 似乎在SQL Server 2012中可以允许不指定约束名，而直接创建，但为了规范还是指定约束名。
+ 外键约束  --在创建时创建 CREATETABLESC(SonintFOREIGNKEYREFERENCESstudent(Sno))--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTfk_pFOREIGNKEY(Sno)REFERENCESstudent(Sno))--在现有表创建 --不指定名 ALTERTABLESCADDFOREIGNKEY(Con)REFERENCESstudent(Cno)--指定名 ALTERTABLESCADDCONSTRAINTfk_perFOREIGNKEY(Con)REFERENCESstudent(Cno)唯一约束   唯一约束与主键约束的区别在于可以为NULL 可以为多个  --在创建时创建 CREATETABLESC(SonintUNIQUE)--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTuc_pUNIQUE(Son,City))--在现有表创建 --不指定名 ALTERTABLESCADDUNIQUE(Sno)--指定名 ALTERTABLESCADDCONSTRAINTuc_pUNIQUE(Cno)检测约束  --在创建时创建 CREATETABLESC(SonintCHECK(Sno&amp;gt;0))--使用表级创建 CREATETABLESC(SonintNOTNULL,Cityvarchar(255),CONSTRAINTuc_pUNIQUE(Son&amp;gt;0andCity=&amp;#39;changde&amp;#39;))--在现有表创建 --不指定名 ALTERTABLESCADDCHECK(Sno&amp;gt;0)--指定名 ALTERTABLESCADDCONSTRAINTuc_pCHECK(Cno&amp;gt;0)默认值约束  CREATETABLEPersons(Id_PintNOTNULL,Cityvarchar(255)DEFAULT&amp;#39;Sandnes&amp;#39;)--还可以这样玩 CREATETABLEOrders(OrderDatedateDEFAULTGETDATE())--ALTER ALTERTABLEPersonsADDDEFAULT&amp;#39;llala&amp;#39;FORCity小小总结 --创建时 CnointPRIMARYKEYCnointFOREIGNKEYREFERENCESStudent(Cno)CnointUNIQUECnointCHECK(Cno&amp;gt;0)CnointDEFAULT&amp;#39;607&amp;#39;--表级约束 CONSTRAINT&amp;lt;约束名&amp;gt;PRIMARYKEY(COLUMN,)CONSTRAINT&amp;lt;约束名&amp;gt;FOREIGNKEYSnoREFERENCESstudent(Sno)CONSTRAINT&amp;lt;约束名&amp;gt;UNIQUE(Sno)CONSTRAINT&amp;lt;约束名&amp;gt;CHECK(Cno&amp;gt;0andCity=&amp;#39;la&amp;#39;)CONSTRAINT&amp;lt;约束名&amp;gt;DEFAULT&amp;#39;男&amp;#39;FORSex--以上CONSTRAINT和约束名均可省略 --事后型 ALTERTABLE&amp;lt;表名&amp;gt;ADDCONSTRAINT&amp;lt;约束名&amp;gt;PRIMARYKEY(Con,City)ADDCONSTRAINT&amp;lt;约束名&amp;gt;FOREIGNKEYSnoREFERENCESStudent(Sno)ADDCONSTRAINT&amp;lt;约束名&amp;gt;UNIQUE(Con)ADDCONSTRAINT&amp;lt;约束名&amp;gt;CHECK(Cno&amp;gt;0andCity=&amp;#39;la&amp;#39;)ADDCONSTRAINT&amp;lt;约束名&amp;gt;DEFAULT&amp;#39;男&amp;#39;FORSex数据操作 --增 INSERTINTO表名称VALUES(值1,值2,."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://puqing.work/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/Date.jpg' />
     </head>
     <body class="">
     <script>
@@ -205,8 +206,20 @@
         </a>
     </div>
 
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/">
+                <img src="/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/Date_huc08d38fd210c05b46744d20f5993585f_160652_800x0_resize_q75_box.jpg"
+                        srcset="/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/Date_huc08d38fd210c05b46744d20f5993585f_160652_800x0_resize_q75_box.jpg 800w, /p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/Date_huc08d38fd210c05b46744d20f5993585f_160652_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post SQL命令集" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -238,7 +251,7 @@
 
     <section class="article-content">
     <p>仅供复习用</p>
-<h2 id="第二章">第二章</h2>
+<h2 id="数据库的创建和管理">数据库的创建和管理</h2>
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--创建数据库
 </span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">database_name</span><span class="w"> 
 </span><span class="w"></span><span class="k">ON</span><span class="w">
@@ -249,7 +262,7 @@
 </span><span class="w"></span><span class="p">)</span><span class="w">
 </span><span class="w"></span><span class="n">LOG</span><span class="w"> </span><span class="k">ON</span><span class="w">
 </span><span class="w"></span><span class="p">(</span><span class="w">
-</span><span class="w">     </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logical_file_name</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logical_file_name</span><span class="p">,</span><span class="w">
 </span><span class="w">    </span><span class="n">FILENAME</span><span class="w">
 </span><span class="w">    </span><span class="p">...</span><span class="w">
 </span><span class="w"></span><span class="p">)</span><span class="w">
@@ -268,16 +281,16 @@
 </span><span class="c1"></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">dbname</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--查看数据库信息
 </span><span class="c1"></span><span class="n">sp_helpdb</span><span class="p">[</span><span class="err">数据库名</span><span class="p">]</span><span class="w">
-</span></code></pre></div><h2 id="第三章">第三章</h2>
+</span></code></pre></div><h2 id="数据表的创建和管理">数据表的创建和管理</h2>
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--创建表
 </span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="o">&lt;</span><span class="err">表名</span><span class="o">&gt;</span><span class="p">(</span><span class="w">
 </span><span class="w">	</span><span class="o">&lt;</span><span class="err">列名</span><span class="o">&gt;&lt;</span><span class="err">数据类型</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="k">NULL</span><span class="o">|</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="k">IDENTITY</span><span class="p">[(</span><span class="n">seed</span><span class="p">,</span><span class="k">increment</span><span class="p">)]]</span><span class="w"> </span><span class="p">[</span><span class="err">{</span><span class="o">&lt;</span><span class="err">约束</span><span class="o">&gt;</span><span class="err">}</span><span class="p">]</span><span class="w">
 </span><span class="w"></span><span class="p">)</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--修改表
 </span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="o">&lt;</span><span class="err">表名</span><span class="o">&gt;</span><span class="p">(</span><span class="w">
-</span><span class="w"></span><span class="k">ADD</span><span class="o">&lt;</span><span class="err">列定义</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">--添加字段
-</span><span class="c1"></span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="o">&lt;</span><span class="err">列名</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">--删除字段
-</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="o">&lt;</span><span class="err">列名</span><span class="o">&gt;&lt;</span><span class="err">属性</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">--修改列属性
+</span><span class="w">    </span><span class="k">ADD</span><span class="o">&lt;</span><span class="err">列定义</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">--添加字段
+</span><span class="c1"></span><span class="w">    </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="o">&lt;</span><span class="err">列名</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">--删除字段
+</span><span class="c1"></span><span class="w">    </span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="o">&lt;</span><span class="err">列名</span><span class="o">&gt;&lt;</span><span class="err">属性</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">--修改列属性
 </span><span class="c1"></span><span class="p">)</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c1">--修改列名
@@ -313,16 +326,16 @@
 <p>由上图所知<strong>主键、外键、唯一、检查这四项，既可以创建列约束，也可以创建表约束。而缺省和非空只能创建列约束。</strong></p>
 <h3 id="约束创建">约束创建</h3>
 <ol>
-<li>
-<p>主键约束</p>
+<li>主键约束</li>
+</ol>
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--在创建时创建
 </span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Course</span><span class="p">(</span><span class="w">
-</span><span class="w">	</span><span class="n">Con</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">Con</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
 </span><span class="w"></span><span class="p">)</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c1">--使用表级创建
 </span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Course</span><span class="p">(</span><span class="w">
-</span><span class="w">	</span><span class="n">Con</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">Con</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
 </span><span class="w">    </span><span class="n">City</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
 </span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">pk_Sc</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">Con</span><span class="p">),</span><span class="w">
 </span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">pk_CC</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">Con</span><span class="p">,</span><span class="n">City</span><span class="p">)</span><span class="w">
@@ -331,9 +344,297 @@
 </span><span class="w"></span><span class="c1">--在现有表创建
 </span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="w">
 </span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_S</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">Con</span><span class="p">,</span><span class="n">City</span><span class="p">)</span><span class="w">
-</span></code></pre></div></li>
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--删除约束
+</span><span class="c1"></span><span class="k">DROP</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_S</span><span class="w">
+</span></code></pre></div><blockquote>
+<p>似乎在SQL Server 2012中可以允许不指定约束名，而直接创建，但为了规范还是指定约束名。</p>
+</blockquote>
+<ol start="2">
+<li>外键约束</li>
 </ol>
-
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--在创建时创建
+</span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">Son</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="n">Sno</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--使用表级创建
+</span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">Son</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">City</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_p</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">Sno</span><span class="p">)</span><span class="w">
+</span><span class="w">    </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="n">Sno</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--在现有表创建
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="c1">--不指定名
+</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">Con</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="n">Cno</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="c1">--指定名
+</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_per</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">Con</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="n">Cno</span><span class="p">)</span><span class="w">
+</span></code></pre></div><ol start="3">
+<li>唯一约束</li>
+</ol>
+<ul>
+<li>唯一约束与主键约束的区别在于可以为NULL</li>
+<li>可以为多个</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--在创建时创建
+</span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">Son</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--使用表级创建
+</span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">Son</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">City</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">uc_p</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">Son</span><span class="p">,</span><span class="n">City</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--在现有表创建
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="c1">--不指定名
+</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">Sno</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="c1">--指定名
+</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">uc_p</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">Cno</span><span class="p">)</span><span class="w">
+</span></code></pre></div><ol start="4">
+<li>检测约束</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--在创建时创建
+</span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">Son</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">CHECK</span><span class="p">(</span><span class="n">Sno</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--使用表级创建
+</span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">Son</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">City</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">uc_p</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">Son</span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">City</span><span class="o">=</span><span class="s1">&#39;changde&#39;</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--在现有表创建
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="c1">--不指定名
+</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">Sno</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="c1">--指定名
+</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">SC</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">uc_p</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">Cno</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w">
+</span></code></pre></div><ol start="5">
+<li>默认值约束</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Persons</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="n">Id_P</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">	</span><span class="n">City</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;Sandnes&#39;</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="c1">--还可以这样玩
+</span><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Orders</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="n">OrderDate</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">GETDATE</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--ALTER
+</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Persons</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;llala&#39;</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">City</span><span class="w">
+</span></code></pre></div><h3 id="小小总结">小小总结</h3>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--创建时
+</span><span class="c1"></span><span class="n">Cno</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w">
+</span><span class="w"></span><span class="n">Cno</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">Cno</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">Cno</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w">
+</span><span class="w"></span><span class="n">Cno</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">CHECK</span><span class="p">(</span><span class="n">Cno</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">Cno</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;607&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--表级约束
+</span><span class="c1"></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="k">COLUMN</span><span class="p">,)</span><span class="w">
+</span><span class="w"></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">Sno</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="n">Sno</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">Sno</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">Cno</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">City</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;la&#39;</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">Sex</span><span class="w">
+</span><span class="w"></span><span class="c1">--以上CONSTRAINT和约束名均可省略
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="c1">--事后型
+</span><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">表名</span><span class="o">&gt;</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">Con</span><span class="p">,</span><span class="n">City</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">Sno</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">Sno</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">(</span><span class="n">Con</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">Cno</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">City</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;la&#39;</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">约束名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">Sex</span><span class="w">
+</span></code></pre></div><h3 id="数据操作">数据操作</h3>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--增
+</span><span class="c1"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="err">表名称</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">值</span><span class="mi">2</span><span class="p">,....)</span><span class="w">
+</span><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="err">列</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">列</span><span class="mi">2</span><span class="p">,...)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">值</span><span class="mi">2</span><span class="p">,....)</span><span class="w">
+</span><span class="w"></span><span class="c1">--也可插入子查询
+</span><span class="c1"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">column_list</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--改
+</span><span class="c1"></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">FirstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fred&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">LastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Wilson&#39;</span><span class="w"> 
+</span><span class="w"></span><span class="c1">--注意这里的WHERE,是修改条件，若无是对所有的值操作
+</span><span class="c1"></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Zhongshan 23&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">City</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Nanjing&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">LastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Wilson&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--删
+</span><span class="c1"></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">LastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Wilson&#39;</span><span class="w"> 
+</span><span class="w"></span><span class="c1">--删除所有数据，但保留结构
+</span><span class="c1"></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span><span class="w"></span><span class="c1">--或是
+</span><span class="c1"></span><span class="k">DELETE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></code></pre></div><h2 id="数据查询">数据查询</h2>
+<p>讲细节</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--移除重复项
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">Sdept</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">--显示前几或前百分比
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">TOP</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">TOP</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="n">PERCENT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--更改列标题的三种方法
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">Sdept</span><span class="w"> </span><span class="err">系名</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">Sdept</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">系名</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="err">系名</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sdept</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--加入新表
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">Sno</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">new_table</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--范围
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">Sage</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">22</span><span class="w">
+</span><span class="w"></span><span class="c1">--注意这里是闭区域
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--模糊匹配
+</span><span class="c1"></span><span class="o">%</span><span class="w"> </span><span class="err">任意长度字符</span><span class="w">
+</span><span class="w"></span><span class="n">_</span><span class="w"> </span><span class="err">单个任意字符</span><span class="w">
+</span><span class="w"></span><span class="p">[]</span><span class="w"> </span><span class="err">括号内任意</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="o">^</span><span class="p">]</span><span class="w"> </span><span class="err">除括号内任意</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="k">NOT</span><span class="p">]</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;AB%&#39;</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="k">NOT</span><span class="p">]</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;[AB]%&#39;</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="k">NOT</span><span class="p">]</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;_AB%&#39;</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--非空
+</span><span class="c1"></span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span><span class="w"></span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--排列
+</span><span class="c1"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="k">asc</span><span class="w">
+</span><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="k">DESC</span><span class="w">
+</span><span class="w"></span><span class="c1">--多个排序，若相同按下一个order排
+</span></code></pre></div><p>COMPUTE子句，可以同时显示明细和统计</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span><span class="w">
+</span><span class="w"></span><span class="n">compute</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">Sage</span><span class="p">)</span><span class="w">
+</span></code></pre></div><p>有分组统计时加by，同时要有order by</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">sdept</span><span class="w">
+</span><span class="w"></span><span class="n">compute</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">sage</span><span class="p">)</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">sdept</span><span class="w">
+</span></code></pre></div><h3 id="相关子查询">相关子查询</h3>
+<p>对于嵌套查询中的单值、多值查询是容易理解的，但是对于相关子查询是不容易理解的。</p>
+<p>关键在于查询的流程不一样了。</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--给定SQL语句
+</span><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> 
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="k">having</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">[]</span><span class="w"> 
+</span></code></pre></div><p>$$
+\begin{aligned}
+&amp;processing\ like\ this.\cr
+&amp;From \to Where \to Group\ by\to Having\to Select\to Order\ By
+\end{aligned}
+$$</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--但是对于一个相关子查询就不一样了
+</span><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s1</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">sage</span><span class="o">&gt;</span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">sage</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s2</span><span class="w">
+</span><span class="w">	</span><span class="k">where</span><span class="w"> </span><span class="n">s1</span><span class="p">.</span><span class="n">sdept</span><span class="o">=</span><span class="n">s2</span><span class="p">.</span><span class="n">sdept</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span></code></pre></div><p>$$
+\begin{aligned}
+&amp;It&rsquo;s\ different\ now. \cr
+&amp;step\ 1. select\ one\ from\ student\ as\ s1\cr
+&amp;step\ 2. from\ student\ as\ s2\cr
+&amp;step\ 3. where\ s1.sdept=s2.sdept\cr
+&amp;step\ 4. select\ AVG()\cr
+&amp;step\ 5. where\ sage&gt;AVG()\cr
+&amp;step\ 6. ture\ next \cr
+&amp;step\ 7. back\ step\ 1
+\end{aligned}
+$$</p>
+<p>所以相关子查询先从外查询取一条数据，再从子查询返回满足条件的数据，然后利用该数据再次查询。</p>
+<p>子查询还有一个相关函数</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="p">[</span><span class="k">NOT</span><span class="p">]</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">(</span><span class="err">子查询</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="k">exists</span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sc</span><span class="w">
+</span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">cno</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">sno</span><span class="o">=</span><span class="n">student</span><span class="p">.</span><span class="n">sno</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="c1">--在这里exists判断了子查询是否为空，若为空，不返回值，若不为空，返回select *
+</span></code></pre></div><h3 id="聚合函数类">聚合函数类</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AVG</td>
+<td style="text-align:center">平均</td>
+<td style="text-align:center">COUNT</td>
+<td style="text-align:center">计数</td>
+</tr>
+<tr>
+<td style="text-align:center">SUM</td>
+<td style="text-align:center">求和</td>
+<td style="text-align:center">MIN</td>
+<td style="text-align:center">最小</td>
+</tr>
+<tr>
+<td style="text-align:center">COUNT(*)</td>
+<td style="text-align:center">总行数</td>
+<td style="text-align:center">MAX</td>
+<td style="text-align:center">最大</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据库编程技术基础">数据库编程技术基础</h2>
+<p>变量声明</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">declare</span><span class="w"> </span><span class="o">@</span><span class="n">name</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span><span class="o">@</span><span class="n">mail</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="o">@</span><span class="n">age</span><span class="w"> </span><span class="nb">smallint</span><span class="w">
+</span></code></pre></div><p>变量赋值</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">set</span><span class="w"> </span><span class="o">@</span><span class="n">name</span><span class="o">=</span><span class="mi">3</span><span class="w">
+</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">name</span><span class="o">=</span><span class="err">表达式</span><span class="w">
+</span></code></pre></div><blockquote>
+<p>注意这里的select语句，若没有from ,where就是赋值语句，但是若有这些，则将最后一个数值赋给它</p>
+</blockquote>
+<p>语句语法</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">IF</span><span class="w"> </span><span class="err">逻辑表达式</span><span class="w">
+</span><span class="w">	</span><span class="o">&lt;</span><span class="err">句子</span><span class="o">&gt;</span><span class="w">
+</span><span class="w"></span><span class="k">else</span><span class="w">
+</span><span class="w">	</span><span class="o">&lt;</span><span class="err">句子</span><span class="o">&gt;</span><span class="w">
+</span></code></pre></div><p>由于$SQL\ Server$只能判断一句话，所以要用$begin\cdots end$包裹(梦回PASCAL)。</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">GOTO</span><span class="w"> </span><span class="err">标签名</span><span class="w">
+</span><span class="w">	</span><span class="err">语句</span><span class="w">
+</span><span class="w"></span><span class="err">标签名</span><span class="p">:</span><span class="w">
+</span><span class="w">	</span><span class="err">语句</span><span class="w">
+</span></code></pre></div><p>GOTO大法好</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--延时
+</span><span class="c1"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:40&#39;</span><span class="w"> </span><span class="c1">--延时多少时间
+</span><span class="c1"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">TIME</span><span class="w"> </span><span class="s1">&#39;16:33:00&#39;</span><span class="w"> </span><span class="c1">--延时到什么时候
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">--CASE表达式
+</span><span class="c1"></span><span class="k">CASE</span><span class="w"> </span><span class="err">输入表达式</span><span class="w">
+</span><span class="w">	</span><span class="k">WHEN</span><span class="w"> </span><span class="err">表达式</span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="err">结果</span><span class="mi">1</span><span class="w">
+</span><span class="w">	</span><span class="k">WHEN</span><span class="w"> </span><span class="err">表达式</span><span class="mi">2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="err">结果</span><span class="mi">2</span><span class="w">
+</span><span class="w">	</span><span class="k">WHEN</span><span class="w"> </span><span class="err">表达式</span><span class="mi">3</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="err">结果</span><span class="mi">3</span><span class="w">
+</span><span class="w">	</span><span class="k">ELSE</span><span class="w"> </span><span class="err">其他结果</span><span class="w">
+</span><span class="w"></span><span class="k">END</span><span class="w">
+</span></code></pre></div><p>这种CASE的逻辑是，判断输入表达式是否满足表达式，若满足则退出，若都不满足则去ELSE</p>
+<p>第二种</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CASE</span><span class="w">
+</span><span class="w">	</span><span class="k">WHEN</span><span class="w"> </span><span class="err">表达式</span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="err">结果</span><span class="mi">1</span><span class="w">
+</span><span class="w">	</span><span class="k">WHEN</span><span class="w"> </span><span class="err">表达式</span><span class="mi">2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="err">结果</span><span class="mi">2</span><span class="w">
+</span><span class="w">	</span><span class="k">WHEN</span><span class="w"> </span><span class="err">表达式</span><span class="mi">3</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="err">结果</span><span class="mi">3</span><span class="w">
+</span><span class="w">	</span><span class="k">ELSE</span><span class="w"> </span><span class="err">其他结果</span><span class="w">
+</span><span class="w"></span><span class="k">END</span><span class="w">
+</span></code></pre></div>
 </section>
 
 
@@ -342,6 +643,8 @@
     <section class="article-tags">
         
             <a href="/tags/%E5%A5%BD%E6%83%B3%E5%AD%A6%E4%B9%A0%E5%95%8A/">好想学习啊</a>
+        
+            <a href="/tags/%E5%AD%A6%E4%B8%8D%E5%8A%A8%E4%BA%86/">学不动了</a>
         
     </section>
 
