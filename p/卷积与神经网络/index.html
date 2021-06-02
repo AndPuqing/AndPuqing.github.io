@@ -39,7 +39,7 @@
  为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下： $$ \begin{gathered} \dots f(0)\cdot g(3)&#43;f(1)\cdot g(2)&#43;f(2)\cdot g(1) \dots \end{gathered} $$ 更加便捷的写法为： $$ \begin{gathered} \sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为： $$ \begin{gathered} (f\ast g)(c)=\sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 如果我们代入$b=c-a$，于是得到： $$ \begin{gathered} (f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)} \end{gathered} $$ 在这里我们实际上已经推导出了卷积的离散形式'>
 <meta property='og:url' content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/'>
 <meta property='og:site_name' content='PuQing Site'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='原理' /><meta property='article:published_time' content='2021-05-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='原理' /><meta property='article:published_time' content='2021-05-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/image.jpg' />
 <meta name="twitter:title" content="卷积与神经网络">
 <meta name="twitter:description" content="理解卷积   在泛函分析中，卷积（又称叠积（convolution）、褶积或旋积），是透过两个函数 f 和 g 生成第三个函数的一种数学算子，表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积。
   以上源自卷积 - 维基百科的介绍。
@@ -57,7 +57,7 @@
  但是，很明显不可能只有这一种情况，只要$a&#43;b=3$，都是可以的，如下面两种情况。
  概率分别是$f(1)\cdot g(2)$和$f(0)\cdot g(3)$。
  为了求球到达$c$的总距离的总可能性，我们应该考虑将所有可能的方法求和。即如下： $$ \begin{gathered} \dots f(0)\cdot g(3)&#43;f(1)\cdot g(2)&#43;f(2)\cdot g(1) \dots \end{gathered} $$ 更加便捷的写法为： $$ \begin{gathered} \sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 这实际上就是在做一个卷积！特别地，在$c$处求$f\ and\ g$的卷积定义为： $$ \begin{gathered} (f\ast g)(c)=\sum_{a&#43;b=c}{f(a)\cdot g(b)} \end{gathered} $$ 如果我们代入$b=c-a$，于是得到： $$ \begin{gathered} (f\ast g)(c)=\sum_{a}{f(a)\cdot g(c-a)} \end{gathered} $$ 在这里我们实际上已经推导出了卷积的离散形式"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv.png' />
+    <meta name="twitter:image" content='https://puqing.work/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/image.jpg' />
     </head>
     <body class="">
     <script>
@@ -231,10 +231,10 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-                <img src="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv_huccf179966149b2a432ced935769eb06a_8168_800x0_resize_box_2.png"
-                        srcset="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv_huccf179966149b2a432ced935769eb06a_8168_800x0_resize_box_2.png 800w, /p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/conv_huccf179966149b2a432ced935769eb06a_8168_1600x0_resize_box_2.png 1600w"
+                <img src="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/image_hu20bf8132347145ecb87dc53d55ad7e04_25034_800x0_resize_q75_box.jpg"
+                        srcset="/p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/image_hu20bf8132347145ecb87dc53d55ad7e04_25034_800x0_resize_q75_box.jpg 800w, /p/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/image_hu20bf8132347145ecb87dc53d55ad7e04_25034_1600x0_resize_q75_box.jpg 1600w"
                         width="800" 
-                        height="178" 
+                        height="534" 
                         loading="lazy"
                         alt="Featured image of post 卷积与神经网络" />
                 
