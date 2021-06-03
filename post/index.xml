@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 02 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>SQL命令集</title>
-      <link>https://puqing.work/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/</link>
+      <title>SQL Server数据库复习</title>
+      <link>https://puqing.work/p/sql-server%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/</link>
       <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://puqing.work/p/sql%E5%91%BD%E4%BB%A4%E9%9B%86/</guid>
+      <guid>https://puqing.work/p/sql-server%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/</guid>
       <description>仅供复习用
 数据库的创建和管理 --创建数据库 CREATEDATABASEdatabase_nameON(NAME=logical_file_name,FILENAME...)LOGON(NAME=logical_file_name,FILENAME...)--修改数据课信息 ALTERDATABASEdatabase_name{ADDFILE&amp;lt;filespec&amp;gt;--添加数据文件 MODIFYFILE&amp;lt;filespec&amp;gt;--修改数据文件 MODIFYNAME=new_dbname--修改数据库名 }--手动收缩数据库 DBSSSHRINKDATABASE(database_name,[target_percent])--修改数据库名 sp_renamedb原,新--删除数据库 DROPDATABASEdbname--查看数据库信息 sp_helpdb[数据库名]数据表的创建和管理 --创建表 CREATETABLE&amp;lt;表名&amp;gt;(&amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[NULL|NOTNULL][IDENTITY[(seed,increment)]][{&amp;lt;约束&amp;gt;}])--修改表 ALTERTABLE&amp;lt;表名&amp;gt;(ADD&amp;lt;列定义&amp;gt;--添加字段 DROPCOLUMN&amp;lt;列名&amp;gt;--删除字段 ALTERCOLUMN&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt;--修改列属性 )--修改列名 Sp_rename&amp;#39;Student.Sdept&amp;#39;,&amp;#39;系别&amp;#39;,&amp;#39;column&amp;#39;以下用实列代替标准写法
 --删除表 DROPTABLECourse--改表名 sp_rename&amp;#39;Student&amp;#39;,&amp;#39;Newstudent&amp;#39;约束 在SQL Server中有五种约束：
