@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>C on PuQing Site</title>
-    <link>https://puqing.work/tags/c/</link>
-    <description>Recent content in C on PuQing Site</description>
+    <title>Code on PuQing Site</title>
+    <link>https://puqing.work/tags/code/</link>
+    <description>Recent content in Code on PuQing Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/tags/c/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>asciiToChar</title>
-      <link>https://puqing.work/p/asciitochar/</link>
-      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://puqing.work/p/asciitochar/</guid>
-      <description>&lt;p&gt;这是蓝桥杯训练第一道题：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This is the first problem for test. Since all we know the ASCII code, your job is simple: Input numbers and output corresponding messages.&lt;/p&gt;</description>
-    </item>
-    
+    <lastBuildDate>Fri, 25 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puqing.work/tags/code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>五指棋程序开发笔记</title>
       <link>https://puqing.work/p/%E4%BA%94%E6%8C%87%E6%A3%8B%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link>

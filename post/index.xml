@@ -126,6 +126,18 @@ $$ \begin{aligned} X(u,v)=(\sqrt{(f(u))^{2}+(h(u))^{2}}\cos{v},g(u),\sqrt{(f(u))
     </item>
     
     <item>
+      <title>五指棋程序开发笔记</title>
+      <link>https://puqing.work/p/%E4%BA%94%E6%8C%87%E6%A3%8B%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://puqing.work/p/%E4%BA%94%E6%8C%87%E6%A3%8B%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h4 id=&#34;前言&#34;&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;此文将会回顾gobang开发过程以及其中遇到的困难，防止在开发的时候只有上帝和我知道逻辑，开发后只有上帝知道。&lt;/p&gt;
+&lt;h4 id=&#34;初探&#34;&gt;&lt;strong&gt;初探&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;​	该程序是在看到有dalao仅用19行写出五子棋，便想尝试实现以下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Markdown Syntax Guide</title>
       <link>https://puqing.work/p/markdown-syntax-guide/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>

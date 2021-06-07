@@ -970,6 +970,147 @@ $$
 </description>
         </item>
         <item>
+        <title>五指棋程序开发笔记</title>
+        <link>https://puqing.work/p/%E4%BA%94%E6%8C%87%E6%A3%8B%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link>
+        <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://puqing.work/p/%E4%BA%94%E6%8C%87%E6%A3%8B%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</guid>
+        <description>&lt;img src="https://puqing.work/p/%E4%BA%94%E6%8C%87%E6%A3%8B%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/gobang.png" alt="Featured image of post 五指棋程序开发笔记" /&gt;&lt;h4 id=&#34;前言&#34;&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;此文将会回顾gobang开发过程以及其中遇到的困难，防止在开发的时候只有上帝和我知道逻辑，开发后只有上帝知道。&lt;/p&gt;
+&lt;h4 id=&#34;初探&#34;&gt;&lt;strong&gt;初探&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;​	该程序是在看到有dalao仅用19行写出五子棋，便想尝试实现以下。&lt;/p&gt;
+&lt;p&gt;​	说实话刚想如何实现时是一头雾水，不知从何入手，想来想去还是从最简单的print环节开始。&lt;/p&gt;
+&lt;h4 id=&#34;dawn函数&#34;&gt;&lt;strong&gt;dawn()函数&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;​		首先是落子的记录方式，由于之前有开发控制台游戏的经历，所以就直接用&lt;strong&gt;数组&lt;/strong&gt;来存储，这也给后面功能实现提供方便，当然也带来麻烦。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;dawn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;high&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;high&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;_cprintf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;_cprintf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;O&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;_cprintf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;@&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;_cprintf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;​		一开始是这样写的，看上去没有问题，但一旦运行便会显露，由于二维数组在内存中是一维线性的，所以函数中二维数组应该用指针访问：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;*(map[i] + j)=0;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样才正常工作。&lt;/p&gt;
+&lt;p&gt;​		这里还有一个细节问题，由于历史原因，定义的函数名要加下划线&lt;code&gt;_&lt;/code&gt;，当然加不加还是要看你的编译器。&lt;/p&gt;
+&lt;h4 id=&#34;main函数&#34;&gt;main()函数&lt;/h4&gt;
+&lt;p&gt;​		有了绘图，接下来是改变数组内容，这比较好做：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-flow&#34; data-lang=&#34;flow&#34;&gt;s=&amp;gt;start: 开始
+e=&amp;gt;end: 结束
+i=&amp;gt;inputoutput: 等待输入
+o=&amp;gt;operation: 分辨输入
+c=&amp;gt;condition: 判断是否有五棋
+o1=&amp;gt;operation: 反应
+
+s-&amp;gt;c-&amp;gt;e
+c(yes)-&amp;gt;e
+c(no)-&amp;gt;i-&amp;gt;o-&amp;gt;o1-&amp;gt;i
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ch&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//等待输入
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;switch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//分辨输入ASCll码
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;119&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//w
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;115&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//s
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;97&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//a
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//d
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//\r
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mod&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;ai&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;113&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//q
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;mod&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;​		这里也有几个小地方值得注意，屏幕的&lt;code&gt;x-y&lt;/code&gt;轴和数组的&lt;code&gt;x-y&lt;/code&gt;不一样，在赋值时注意对应&lt;/p&gt;
+&lt;h4 id=&#34;sum函数&#34;&gt;sum()函数&lt;/h4&gt;
+&lt;p&gt;​		这个对我来说是一个难点。需要实现以下功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;竖向判断连续五子&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;横向判断连续五子&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;两个斜方向判断连续五子&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;​		这个函数我尝试了许多方法，如求和判断，连续函数判断。但都因不能满足全部要求而pass掉。
+​这里想说一下连续函数判断：&lt;/p&gt;
+&lt;p&gt;​		逻辑很简单，遍历数组，若map&lt;code&gt;[x][y]&lt;/code&gt;==map&lt;code&gt;[x][y+1]&lt;/code&gt;便计数加一，横竖斜也类似，在测试过程中它的确有作用，当计数结果非常不符合预期，这是因为它会将每行的相同加在一起，解决办法还是有的，如创建数组存储，每行初始化。但代码十分臃肿，这跟我们采用数组数据结构是相关的。&lt;/p&gt;
+&lt;p&gt;​		最后解决问题是用了一个特别暴力的方法，但足够简洁，直观。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for (int i = 0; i &amp;lt; high; i++)
+    {
+        for (int j = 0; j &amp;lt; width - 4; j++)
+        {
+            if (map[i][j] == map[i][j + 1] 
+            &amp;amp;&amp;amp; map[i][j + 1] == map[i][j + 2] 
+            &amp;amp;&amp;amp; map[i][j + 2] == map[i][j + 3] 
+            &amp;amp;&amp;amp; map[i][j + 3] == map[i][j + 4] 
+            &amp;amp;&amp;amp; map[i][j] != 0)
+            {
+                return 0;
+            }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;​		emmm就这么暴力，其他方向亦可仿照。&lt;/p&gt;
+&lt;h4 id=&#34;ai函数&#34;&gt;&lt;strong&gt;ai()函数&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;​		来到了让我困惑了好久的AI模块。我一开始的想法是统计每个方向连续对手棋子个数，比出最多的一个。这就是根据我自己玩五指棋的方法来做。但以我现在知识很难将其代码化，还是数据结构的问题。就这样我给绕了进去，所以我选择放松放松。看到晚霞和蓝调，emm，来灵感了。&lt;/p&gt;
+&lt;p&gt;​		我转变了思路，AI以对手落子来判断，不仅减小判断范围，也很好表达。当然，这是以对手是进攻为前提的。&lt;/p&gt;
+&lt;p&gt;还记的map是int类型吗，我可以让AI求对手落子的8个方向3格的和，找出最大值的对向便可以做出拦截动作。&lt;/p&gt;
+&lt;p&gt;​		问题又来了，如何表达最大值的对向，对于8个方向实际上是&lt;code&gt;x+1，x，x-1&lt;/code&gt;和&lt;code&gt;y+1, y , y-1&lt;/code&gt;的组合，你想到了什么，对的，&lt;code&gt;for&lt;/code&gt;循环，在求出最值时，对&lt;strong&gt;for&lt;/strong&gt;循环中的控制量取反便可。&lt;/p&gt;
+&lt;p&gt;​		细节：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.对于AI落子可能落在已有棋的特殊情况，我的解决方法是，生成-2~2的随机量，直到落的地方是空的，这样还是有特殊情况，所以随机一次便改变对手落子的位置存储。&lt;/p&gt;
+&lt;p&gt;2.在比较最大值时有一种特殊情况，便是最一开始，都为0时，这里的max存储变量在初始化时设为-1，便可规避。&lt;/p&gt;
+&lt;p&gt;3.这里因为对手落子时对map的赋值是1，所以可以比大小来判断，这也是为什么在切换模式时只能让人类用白棋，后面可以加转换。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;p&gt;​		最后的效果还是非常不错的。&lt;/p&gt;
+&lt;h4 id=&#34;重构&#34;&gt;&lt;strong&gt;重构&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;​		之前是将map定义在main函数中，其实定义在函数外便可规避传递二维数组所带来的一系列问题，便可直接用map&lt;code&gt;[][]&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;改进&#34;&gt;&lt;strong&gt;改进&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;​		受限于知识水平，代码还做不到dalao19行的优美。可以寻找更加好的数据结构，AI判断逻辑，赢家输出，空气墙回退。&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>Markdown Syntax Guide</title>
         <link>https://puqing.work/p/markdown-syntax-guide/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
