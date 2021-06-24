@@ -558,58 +558,40 @@ $$&lt;/li&gt;
 &lt;p&gt;对于$n$个$m$个未知数的方程，能够组成多少个几元方程？&lt;/p&gt;
 &lt;p&gt;这里不证，直接给结论&lt;/p&gt;
 &lt;p&gt;对于$n$个$m$个未知数的方程，能够组成$n$个$m-n$元方程&lt;/p&gt;
-&lt;blockquote&gt;
 &lt;p&gt;$e.g.$
 $$
-\begin{aligned}
-\left{
-\begin{split}
-F(x,y,u,v)=0,\&lt;br&gt;
-G(x,y,u,v)=0.\&lt;br&gt;
-\end{split}
-\right.
-\end{aligned}
+\begin{cases}
+F(x,y,u,v)=0,\cr
+G(x,y,u,v)=0.\cr
+\end{cases}
 $$
 可以组成两个二元方程，即
 $$
-\begin{aligned}
-\left{
-\begin{split}
-u=u(x,y)\&lt;br&gt;
-v=v(x,y)\&lt;br&gt;
-\end{split}
-\right.
-\end{aligned},etc.
+\begin{cases}
+u=u(x,y)\cr
+v=v(x,y)\cr
+\end{cases},etc.
 $$&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;h3 id=&#34;公式推导&#34;&gt;公式推导&lt;/h3&gt;
 &lt;p&gt;设$F(x,y,u,v)=0、G(x,y,u,v)=0$在点$P(x,y,u,v)$的某一邻域内具有对各个变量的连续偏导数。
 $$
-\begin{aligned}
-\left{
-\begin{split}
-F(x,y,u,v)=0,\&lt;br&gt;
-G(x,y,u,v)=0.\&lt;br&gt;
-\end{split}
-\right.
-\end{aligned}
+\begin{cases}
+F(x,y,u,v)=0,\cr
+G(x,y,u,v)=0.\cr
+\end{cases}
 $$
 对$x$求偏导数
 $$
 \begin{gathered}
-\left{
-\begin{split}
-F_{x}+F_{u}\frac{\partial u}{\partial x}+F_{v}\frac{\partial v}{\partial x}=0,\&lt;br&gt;
+\begin{cases}
+F_{x}+F_{u}\frac{\partial u}{\partial x}+F_{v}\frac{\partial v}{\partial x}=0,\cr
 G_{x}+G_{u}\frac{\partial u}{\partial x}+G_{v}\frac{\partial v}{\partial x}=0.
-\end{split}
-\right.\&lt;br&gt;
-\Downarrow \&lt;br&gt;
-\left{
-\begin{split}
-F_{u}\frac{\partial u}{\partial x}+F_{v}\frac{\partial v}{\partial x}=-F_{x},\&lt;br&gt;
+\end{cases}\cr
+\Downarrow \cr
+\begin{cases}
+F_{u}\frac{\partial u}{\partial x}+F_{v}\frac{\partial v}{\partial x}=-F_{x},\cr
 G_{u}\frac{\partial u}{\partial x}+G_{v}\frac{\partial v}{\partial x}=-G_{x}.
-\end{split}
-\right.\&lt;br&gt;
+\end{cases}\cr
 \end{gathered}
 $$
 使用$Cramer$(克拉默)法则可求解上述线性方程组。
@@ -617,22 +599,22 @@ $$
 \begin{aligned}
 \frac{\partial u}{\partial x}=\frac{
 \begin{vmatrix}
--F_{x} &amp;amp;F_{v} \&lt;br&gt;
+-F_{x} &amp;amp;F_{v} \cr
 -G_{x} &amp;amp;F_{v}
 \end{vmatrix}
 }{
 \begin{vmatrix}
-F_{u} &amp;amp; F_{v}\&lt;br&gt;
+F_{u} &amp;amp; F_{v}\cr
 G_{u} &amp;amp; G_{v}
 \end{vmatrix}},
 \frac{\partial v}{\partial x}=\frac{
 \begin{vmatrix}
-F_{u} &amp;amp;-F_{x} \&lt;br&gt;
+F_{u} &amp;amp;-F_{x} \cr
 G_{u} &amp;amp;-G_{x}
 \end{vmatrix}
 }{
 \begin{vmatrix}
-F_{u} &amp;amp; F_{v}\&lt;br&gt;
+F_{u} &amp;amp; F_{v}\cr
 G_{u} &amp;amp; G_{v}
 \end{vmatrix}}
 \end{aligned}.
@@ -642,22 +624,22 @@ $$
 \begin{aligned}
 \frac{\partial u}{\partial y}=\frac{
 \begin{vmatrix}
--F_{y} &amp;amp;F_{v} \&lt;br&gt;
+-F_{y} &amp;amp;F_{v} \cr
 -G_{y} &amp;amp;F_{v}
 \end{vmatrix}
 }{
 \begin{vmatrix}
-F_{u} &amp;amp; F_{v}\&lt;br&gt;
+F_{u} &amp;amp; F_{v}\cr
 G_{u} &amp;amp; G_{v}
 \end{vmatrix}},
 \frac{\partial v}{\partial x}=\frac{
 \begin{vmatrix}
-F_{u} &amp;amp;-F_{y} \&lt;br&gt;
+F_{u} &amp;amp;-F_{y} \cr
 G_{u} &amp;amp;-G_{y}
 \end{vmatrix}
 }{
 \begin{vmatrix}
-F_{u} &amp;amp; F_{v}\&lt;br&gt;
+F_{u} &amp;amp; F_{v}\cr
 G_{u} &amp;amp; G_{v}
 \end{vmatrix}}
 \end{aligned}.
@@ -666,34 +648,34 @@ $$
 $$
 J=\frac{\partial(F,G)}{\partial(u,v)}=
 \begin{vmatrix}
-\frac{\partial F}{\partial u}   &amp;amp; \frac{\partial F}{\partial v}\&lt;br&gt;
+\frac{\partial F}{\partial u}   &amp;amp; \frac{\partial F}{\partial v}\cr
 \frac{\partial G}{\partial u}  &amp;amp;\frac{\partial G}{\partial v}
 \end{vmatrix}\tag{7}
 $$
 则上述过程可简化为
 $$
-\begin{aligned}
-\frac{\partial u}{\partial x}=-\frac{1}{J}\frac{\partial(F,G)}{\partial(x,v)},\&lt;/p&gt;
-&lt;p&gt;\frac{\partial v}{\partial x}=-\frac{1}{J}\frac{\partial(F,G)}{\partial(u,x)},\&lt;br&gt;
-\frac{\partial u}{\partial y}=-\frac{1}{J}\frac{\partial(F,G)}{\partial(y,v)},\&lt;br&gt;
+\begin{gathered}
+\frac{\partial u}{\partial x}=-\frac{1}{J}\frac{\partial(F,G)}{\partial(x,v)},\cr
+\frac{\partial v}{\partial x}=-\frac{1}{J}\frac{\partial(F,G)}{\partial(u,x)},\cr
+\frac{\partial u}{\partial y}=-\frac{1}{J}\frac{\partial(F,G)}{\partial(y,v)},\cr
 \frac{\partial v}{\partial y}=-\frac{1}{J}\frac{\partial(F,G)}{\partial(u,y)}.
-\end{aligned}\tag{8}
+\end{gathered}\tag{8}
 $$
-小清十分弱鸡啊，本来$Cramer&amp;rsquo;s\ Rule$很清晰了，一用$Jacobi$行列式就复杂无比，难记。下面简述雅各比行列式的含义（&lt;strong&gt;注：以下是个人看待，并无完备推导，选择接受&lt;/strong&gt;）。&lt;/p&gt;
+小清十分弱鸡啊，本来$Cramer&amp;rsquo;s\ Rule$很清晰了，一用$Jacobi$行列式就复杂无比，难记。下面简述雅各比行列式的含义**注:以下是个人看待，并无完备推导，选择接受。**&lt;/p&gt;
 &lt;h4 id=&#34;雅各比行列式&#34;&gt;雅各比行列式&lt;/h4&gt;
 &lt;p&gt;考虑这样一种变换
 $$
 \begin{bmatrix}
-u \&lt;br&gt;
+u \cr
 v
 \end{bmatrix}=
 \begin{bmatrix}
-u(x,y) \&lt;br&gt;
+u(x,y) \cr
 v(x,y)
 \end{bmatrix}
 $$
 即不再是线性变换而是非线性变换，则若讨论该变换张成空间的面积微元，如何思考？&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://puqing.work/jog.svg&#34; alt=&#34;空间非线性变换&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;上图即是非线性的映射，这里需要&lt;strong&gt;注意的是虽然是非线性的，但是考虑面积微元时是看成直线。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;先来看$dx$如何变化的吧&lt;/p&gt;
 &lt;ol&gt;
